@@ -19,7 +19,6 @@
     //         <&kp LEFT_ARROW>,
     //         <&kp UP_ARROW>,
     //         <&kp DOWN_ARROW>;
-
     //     tick = <10>;
     //     wait-ms = <5>;
     //     tap-ms = <5>;
@@ -62,6 +61,27 @@
             #binding-cells = <1>;
             bindings = <&to 0 &macro_param_1to1 &kp MACRO_PLACEHOLDER>;
             label = "TO_LAYER_0";
+        };
+
+        close_tab: close_tab {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LC(W)>;
+            label = "CLOSE_TAB";
+        };
+
+        Win_ss: WinShiftS {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LG(LS(S))>;
+            label = "WINSHIFTS";
+        };
+
+        restore_tab: restore_tab {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LS(LC(T))>;
+            label = "RESTORE_TAB";
         };
     };
 
@@ -121,10 +141,10 @@
 
         MOUSE {
             bindings = <
-&trans  &trans  &trans  &trans  &trans                      &trans  &trans    &trans    &trans    &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &mkp MB1  &mkp MB3  &mkp MB2  &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &trans    &trans    &trans    &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans                                &trans
+&trans  &trans  &trans  &trans  &trans                      &trans      &restore_tab  &trans           &mkp MB2       &trans
+&trans  &trans  &trans  &trans  &trans  &trans      &trans  &close_tab  &mkp MB1      &mkp MB3         &kp K_FORWARD  &trans
+&trans  &trans  &trans  &trans  &trans  &trans      &trans  &kp F5      &kp K_BACK    &kp LS(LC(TAB))  &kp LC(TAB)    &trans
+&trans  &trans  &trans  &trans  &trans  &trans      &trans  &Win_ss                                                   &trans
             >;
         };
 
