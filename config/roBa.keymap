@@ -141,7 +141,7 @@
 
         MOUSE {
             bindings = <
-&trans  &trans  &trans  &trans  &trans                       &trans  &none       &none            &kp LA(RIGHT)  &trans
+&trans  &trans  &trans  &trans  &trans                       &trans  &none       &trans           &kp LA(RIGHT)  &trans
 &trans  &trans  &trans  &trans  &trans  &trans      &trans   &none   &mkp MB1    &mkp MB3         &mkp MB2       &kp LA(LEFT)
 &trans  &trans  &trans  &trans  &trans  &trans      &trans   &kp F5  &close_tab  &kp LS(LC(TAB))  &kp LC(TAB)    &restore_tab
 &trans  &trans  &trans  &trans  &trans  &trans      &Win_ss  &none                                               &trans
