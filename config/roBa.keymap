@@ -128,6 +128,32 @@
 
             label = "M_MIN_MIN";
         };
+
+        m_alt_tab: m_alt_tab {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LA(TAB)>;
+            label = "M_ALT_TAB";
+        };
+
+        m_alt_tab_stay: m_alt_tab_stay {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&mo 7>,
+                <&macro_press>,
+                <&kp LEFT_ALT>,
+                <&macro_tap>,
+                <&kp TAB>,
+                <&macro_pause_for_release>,
+                <&macro_release>,
+                <&kp LEFT_ALT>,
+                <&macro_release>,
+                <&mo 7>;
+
+            label = "M_ALT_TAB_STAY";
+        };
     };
 
     behaviors {
@@ -221,6 +247,8 @@
 &trans  &trans  &trans  &trans  &trans  &trans      &trans  &kp F5      &kp LS(LC(T))  &kp LC(LS(TAB))  &kp LC(TAB)               &trans
 &trans  &trans  &trans  &trans  &trans  &trans      &trans  &kp LC(W)                                                             &kp LA(RIGHT)
             >;
+
+            sensor-bindings = <&inc_dec_kp 0 0>;
         };
 
         SCROLL {
@@ -239,6 +267,17 @@
 &trans  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &trans  &trans      &bootloader  &trans        &trans        &trans        &trans        &bt BT_CLR
 &trans  &trans        &trans        &trans        &trans  &trans      &trans       &trans                                                  &bt BT_CLR_ALL
             >;
+        };
+
+        layer_7 {
+            bindings = <
+&trans  &trans  &trans  &trans  &trans                      &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans                          &trans
+            >;
+
+            sensor-bindings = <&inc_dec_kp 0 0>, <&inc_dec_kp TAB LS(TAB)>;
         };
     };
 };
