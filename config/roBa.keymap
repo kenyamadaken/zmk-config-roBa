@@ -89,6 +89,45 @@
 
             label = "M_GEMINI_MIC";
         };
+
+        m_copy: m_copy {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LC(C)>;
+            label = "M_COPY";
+        };
+
+        m_cut: m_cut {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LC(X)>;
+            label = "M_CUT";
+        };
+
+        m_clean_paste: m_clean__paste {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LS(LC(V))>;
+            label = "M_CLEAN__PASTE";
+        };
+
+        m_paste: m_paste {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LC(V)>;
+            label = "M_PASTE";
+        };
+
+        m_min_min: m_min_min {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&kp LG(DOWN_ARROW)>,
+                <&macro_wait_time 50>,
+                <&kp LG(DOWN)>;
+
+            label = "M_MIN_MIN";
+        };
     };
 
     behaviors {
@@ -107,6 +146,26 @@
             #binding-cells = <2>;
             bindings = <&m_win_shift_s>, <&m_alt_prtsc>;
 
+            tapping-term-ms = <150>;
+            flavor = "tap-preferred";
+        };
+
+        b_copy_cut: b_copy_cut {
+            compatible = "zmk,behavior-hold-tap";
+            label = "B_COPY_CUT";
+            bindings = <&m_cut>, <&m_copy>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            flavor = "tap-preferred";
+        };
+
+        b_paste_clean_paste: b_paste_clean_paste {
+            compatible = "zmk,behavior-hold-tap";
+            label = "B_PASTE_CLEAN_PASTE";
+            bindings = <&m_clean_paste>, <&m_paste>;
+
+            #binding-cells = <2>;
             tapping-term-ms = <150>;
             flavor = "tap-preferred";
         };
@@ -157,10 +216,10 @@
 
         MOUSE {
             bindings = <
-&trans  &trans  &trans  &trans  &trans                      &trans  &trans    &trans    &trans    &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &mkp MB1  &mkp MB3  &mkp MB2  &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &trans    &trans    &trans    &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans                                &trans
+&trans  &trans  &trans  &trans  &trans                      &m_min_min  &kp LC(T)      &mkp MB3         &b_paste_clean_paste 0 0  &kp LG(V)
+&trans  &trans  &trans  &trans  &trans  &trans      &trans  &kp LC(A)   &mkp MB1       &b_copy_cut 0 0  &mkp MB2                  &kp LA(LEFT)
+&trans  &trans  &trans  &trans  &trans  &trans      &trans  &kp F5      &kp LS(LC(T))  &kp LC(LS(TAB))  &kp LC(TAB)               &trans
+&trans  &trans  &trans  &trans  &trans  &trans      &trans  &kp LC(W)                                                             &kp LA(RIGHT)
             >;
         };
 
