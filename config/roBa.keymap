@@ -147,6 +147,20 @@
 
             label = "M_ALT_TAB_STAY";
         };
+
+        m_Ctrl_A: m_Ctrl_A {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LC(A)>;
+            label = "M_CTRL_A";
+        };
+
+        m_mkp_right: m_mkp_right {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&mkp MB2>;
+            label = "M_MKP_RIGHT";
+        };
     };
 
     behaviors {
@@ -186,6 +200,16 @@
 
             #binding-cells = <2>;
             tapping-term-ms = <150>;
+            flavor = "tap-preferred";
+        };
+
+        b_Rclick_Ctrl_A: b_Rclick_Ctrl_A {
+            compatible = "zmk,behavior-hold-tap";
+            label = "B_RCLICK_CTRL_A";
+            bindings = <&m_Ctrl_A>, <&m_mkp_right>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
             flavor = "tap-preferred";
         };
     };
@@ -235,10 +259,10 @@
 
         MOUSE {
             bindings = <
-&trans  &trans  &trans  &trans  &trans                      &m_min_min  &kp LC(T)      &mkp MB3         &b_paste_clean_paste 0 0  &kp LG(V)
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &kp LC(A)   &mkp MB1       &b_copy_cut 0 0  &mkp MB2                  &kp LA(LEFT)
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &kp F5      &kp LS(LC(T))  &kp LC(LS(TAB))  &kp LC(TAB)               &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &kp LC(W)                                                             &kp LA(RIGHT)
+&trans  &trans  &trans  &trans  &trans                      &m_min_min       &kp LC(T)  &trans           &b_paste_clean_paste 0 0  &kp LG(V)
+&trans  &trans  &trans  &trans  &trans  &trans      &trans  &b_copy_cut 0 0  &mkp MB1   &mkp MB3         &b_Rclick_Ctrl_A 0 0      &kp LA(LEFT)
+&trans  &trans  &trans  &trans  &trans  &trans      &kp F5  &kp LS(LC(T))    &kp LC(W)  &kp LC(LS(TAB))  &kp LC(TAB)               &trans
+&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans                                                                 &kp LA(RIGHT)
             >;
 
             sensor-bindings = <&inc_dec_kp 0 0>;
