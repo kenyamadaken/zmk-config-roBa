@@ -266,11 +266,13 @@
             bindings = <
 &trans  &trans  &trans  &trans  &trans                      &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &kp A       &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans                          &trans
             >;
 
-            sensor-bindings = <&inc_dec_kp 0 0>, <&inc_dec_kp TAB LS(TAB)>;
+            sensor-bindings =
+                <&inc_dec_kp TAB LS(TAB)>,
+                <&inc_dec_kp TAB LS(TAB)>;
         };
     };
 };
