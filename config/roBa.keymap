@@ -62,6 +62,20 @@
             bindings = <&to 0 &macro_param_1to1 &kp MACRO_PLACEHOLDER>;
             label = "TO_LAYER_0";
         };
+
+        m_alt_prtsc: m_alt_prtsc {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LA(PRINTSCREEN)>;
+            label = "M_ALT_PRTSC";
+        };
+
+        m_win_shift_s: m_win_shift_s {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LG(LS(S))>;
+            label = "M_WIN_SHIFT_S";
+        };
     };
 
     behaviors {
@@ -73,6 +87,16 @@
             #binding-cells = <2>;
             tapping-term-ms = <200>;
         };
+
+        b_scshot: b_scshot {
+            compatible = "zmk,behavior-hold-tap";
+            label = "B_SCSHOT";
+            #binding-cells = <2>;
+            bindings = <&m_win_shift_s>, <&m_alt_prtsc>;
+
+            tapping-term-ms = <150>;
+            flavor = "tap-preferred";
+        };
     };
 
     keymap {
@@ -81,9 +105,9 @@
         default_layer {
             bindings = <
 &kp Q      &kp W         &kp E         &kp R                        &kp T                                                          &kp Y          &kp U  &lt 5 I    &kp O    &kp P
-&kp A      &kp S         &kp D         &kp F                        &kp G        &kp LS(LG(S))                      &kp MINUS      &kp H          &kp J  &kp K      &kp L    &kp ENTER
+&kp A      &kp S         &kp D         &kp F                        &kp G        &kp LS(LG(S))                      &b_scshot 0 0  &kp H          &kp J  &kp K      &kp L    &kp ENTER
 &kp Z      &kp X         &kp C         &kp V                        &kp B        &kp COLON                          &kp SEMICOLON  &kp N          &kp M  &kp COMMA  &kp DOT  &kp SLASH
-&kp LCTRL  &kp LEFT_WIN  &kp LEFT_ALT  &lt_to_layer_0 6 INT_HENKAN  &lt 2 SPACE  &lt_to_layer_0 3 INT_MUHENKAN      &kp BACKSPACE  &kp BACKSPACE                             &kp DEL
+&kp LCTRL  &kp LEFT_WIN  &kp LEFT_ALT  &lt_to_layer_0 6 INT_HENKAN  &lt 2 SPACE  &lt_to_layer_0 3 INT_MUHENKAN      &trans         &kp BACKSPACE                             &kp DEL
             >;
 
             sensor-bindings = <&inc_dec_kp PG_UP PAGE_DOWN>;
