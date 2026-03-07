@@ -129,13 +129,6 @@
             label = "M_MIN_MIN";
         };
 
-        m_alt_tab: m_alt_tab {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp LA(TAB)>;
-            label = "M_ALT_TAB";
-        };
-
         m_alt_tab_stay: m_alt_tab_stay {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -204,7 +197,7 @@
             bindings = <
 &kp Q      &kp W         &kp E         &kp R                        &kp T                                                 &kp Y          &kp U  &lt 5 I    &kp O    &kp P
 &kp A      &kp S         &kp D         &kp F                        &kp G        &kp LS(LG(S))             &b_scshot 0 0  &kp H          &kp J  &kp K      &kp L    &kp ENTER
-&kp Z      &kp X         &kp C         &kp V                        &kp B        &kp COLON                 &kp SEMICOLON  &kp N          &kp M  &kp COMMA  &kp DOT  &kp SLASH
+&kp Z      &kp X         &kp C         &kp V                        &kp B        &kp COLON                 &kp SEMICOLON  &kp N          &kp M  &kp COMMA  &kp DOT  &m_alt_tab_stay
 &kp LCTRL  &kp LEFT_WIN  &kp LEFT_ALT  &lt_to_layer_0 6 INT_HENKAN  &lt 2 SPACE  &lt_to_layer_0 3 TAB      &m_gemini_mic  &kp BACKSPACE                             &kp DEL
             >;
 
