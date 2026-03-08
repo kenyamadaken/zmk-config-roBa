@@ -178,14 +178,6 @@
             label = "M_PGDN";
         };
 
-        m_PgDn: m_Pgdn {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&macro_tap>, <&kp PAGE_DOWN>;
-
-            label = "M_PGDN";
-        };
-
         m_haifun: m_hafun {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -275,16 +267,6 @@
             flavor = "tap-preferred";
         };
 
-        b_DnArrow_PgDn: b_DnArrow_PgDn {
-            compatible = "zmk,behavior-hold-tap";
-            label = "B_DNARROW_PGDN";
-            bindings = <&m_PgDn>, <&m_down_arrow>;
-
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            flavor = "tap-preferred";
-        };
-
         b_haifun_underbar: b_haifun_underbar {
             compatible = "zmk,behavior-hold-tap";
             label = "B_HAIFUN_UNDERBAR";
@@ -324,7 +306,7 @@
             bindings = <
 &trans  &trans  &trans  &trans          &trans                                        &trans           &trans           &b_UpArrow_PgUp 0 0     &kp SLASH        &kp LG(V)
 &trans  &trans  &trans  &kp LEFT_SHIFT  &trans  &trans      &trans                    &kp HOME         &kp LEFT_ARROW   &b_haifun_underbar 0 0  &kp RIGHT_ARROW  &kp END
-&trans  &trans  &trans  &trans          &trans  &trans      &trans                    &kp QUESTION     &kp EXCLAMATION  &b_DnArrow_PgDn 0 0     &trans           &trans
+&trans  &trans  &trans  &trans          &trans  &trans      &trans                    &kp QUESTION     &kp EXCLAMATION  &trans                  &trans           &trans
 &trans  &trans  &trans  &trans          &trans  &trans      &b_paste_clean_paste 0 0  &b_copy_cut 0 0                                                            &trans
             >;
         };
