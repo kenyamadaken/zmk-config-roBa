@@ -134,7 +134,7 @@
             #binding-cells = <0>;
             bindings =
                 <&macro_press>,
-                <&mo 7>,
+                <&mo 8>,
                 <&macro_press>,
                 <&kp LEFT_ALT>,
                 <&macro_tap>,
@@ -143,7 +143,7 @@
                 <&macro_release>,
                 <&kp LEFT_ALT>,
                 <&macro_release>,
-                <&mo 7>;
+                <&mo 8>;
 
             label = "M_ALT_TAB_STAY";
         };
@@ -160,6 +160,48 @@
             #binding-cells = <0>;
             bindings = <&mkp MB2>;
             label = "M_MKP_RIGHT";
+        };
+
+        m_up_arrow: m_up_arrow {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp UP_ARROW>;
+            label = "M_UP_ARROW";
+        };
+
+        m_Pgup: m_Pgup {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp PG_UP>;
+            label = "M_PGUP";
+        };
+
+        m_down_arrow: m_PgDn {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp DOWN_ARROW>;
+            label = "M_PGDN";
+        };
+
+        m_Pgdn: m_Pgdn {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp PAGE_DOWN>;
+            label = "M_PGDN";
+        };
+
+        m_hafun: m_hafun {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp MINUS>;
+            label = "M_HAFUN";
+        };
+
+        m_underbar: m_underbar {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LS(NON_US_BACKSLASH)>;
+            label = "M_UNDERBAR";
         };
     };
 
@@ -212,6 +254,36 @@
             tapping-term-ms = <200>;
             flavor = "tap-preferred";
         };
+
+        b_UpArrow_PgUp: b_UpArrow_PgUp {
+            compatible = "zmk,behavior-hold-tap";
+            label = "B_UPARROW_PGUP";
+            bindings = <&m_Pgup>, <&m_up_arrow>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            flavor = "tap-preferred";
+        };
+
+        b_DnArrow_PgDn: b_DnArrow_PgDn {
+            compatible = "zmk,behavior-hold-tap";
+            label = "B_DNARROW_PGDN";
+            bindings = <&m_Pgdn>, <&m_down_arrow>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            flavor = "tap-preferred";
+        };
+
+        b_haifun_underbar: b_haifun_underbar {
+            compatible = "zmk,behavior-hold-tap";
+            label = "B_HAIFUN_UNDERBAR";
+            bindings = <&m_underbar>, <&m_hafun>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            flavor = "tap-preferred";
+        };
     };
 
     keymap {
@@ -219,13 +291,22 @@
 
         default_layer {
             bindings = <
-&kp Q      &kp W         &kp E         &kp R                        &kp T                                                 &kp Y          &kp U  &lt 5 I    &kp O    &kp P
+&kp Q      &kp W         &kp E         &kp R                        &kp T                                                 &kp Y          &kp U  &lt 6 I    &kp O    &kp P
 &kp A      &kp S         &kp D         &kp F                        &kp G        &kp LS(LG(S))             &b_scshot 0 0  &kp H          &kp J  &kp K      &kp L    &kp ENTER
-&kp Z      &kp X         &kp C         &kp V                        &kp B        &kp COLON                 &kp SEMICOLON  &kp N          &kp M  &kp COMMA  &kp DOT  &m_alt_tab_stay
-&kp LCTRL  &kp LEFT_WIN  &kp LEFT_ALT  &lt_to_layer_0 6 INT_HENKAN  &lt 2 SPACE  &lt_to_layer_0 3 TAB      &m_gemini_mic  &kp BACKSPACE                             &kp DEL
+&kp Z      &kp X         &kp C         &kp V                        &kp B        &trans                    &trans         &kp N          &kp M  &kp COMMA  &kp DOT  &m_alt_tab_stay
+&kp LCTRL  &kp LEFT_WIN  &kp LEFT_ALT  &lt_to_layer_0 7 INT_HENKAN  &lt 1 SPACE  &lt_to_layer_0 4 TAB      &m_gemini_mic  &kp BACKSPACE                             &kp DEL
             >;
 
             sensor-bindings = <&inc_dec_kp PG_UP PAGE_DOWN>;
+        };
+
+        layer_1 {
+            bindings = <
+&trans  &trans  &trans  &trans          &trans                                        &trans           &trans           &b_UpArrow_PgUp 0 0     &kp SLASH        &kp LG(V)
+&trans  &trans  &trans  &kp LEFT_SHIFT  &trans  &trans      &trans                    &kp HOME         &kp LEFT_ARROW   &b_haifun_underbar 0 0  &kp RIGHT_ARROW  &kp END
+&trans  &trans  &trans  &trans          &trans  &trans      &trans                    &kp QUESTION     &kp EXCLAMATION  &b_DnArrow_PgDn 0 0     &trans           &trans
+&trans  &trans  &trans  &trans          &trans  &trans      &b_paste_clean_paste 0 0  &b_copy_cut 0 0                                                            &trans
+            >;
         };
 
         FUNCTION {
@@ -290,7 +371,7 @@
             bindings = <
 &trans  &trans  &trans  &trans  &trans                      &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &kp A       &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans                          &trans
             >;
 
