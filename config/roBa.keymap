@@ -181,7 +181,8 @@
         m_PgDn: m_Pgdn {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp PAGE_DOWN>;
+            bindings = <&macro_tap>, <&kp PAGE_DOWN>;
+
             label = "M_PGDN";
         };
 
