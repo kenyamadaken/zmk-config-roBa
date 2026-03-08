@@ -39,11 +39,6 @@
             key-positions = <12 13>;
         };
 
-        muhennkann {
-            bindings = <&to_layer_0 INT_MUHENKAN>;
-            key-positions = <11 10>;
-        };
-
         double_quotation {
             bindings = <&kp DOUBLE_QUOTES>;
             key-positions = <20 21>;
@@ -203,6 +198,20 @@
             bindings = <&kp LS(NON_US_BACKSLASH)>;
             label = "M_UNDERBAR";
         };
+
+        m_to_layer0: m_to_layer0 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&to 0>;
+            label = "M_TO_LAYER0";
+        };
+
+        m_stay_mouse_layer: m_stay_mouse_layer {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&mo 5>;
+            label = "M_STAY_MOUSE_LAYER";
+        };
     };
 
     behaviors {
@@ -284,6 +293,16 @@
             tapping-term-ms = <200>;
             flavor = "tap-preferred";
         };
+
+        b_mouse_layer_move: b_mouse_layer_move {
+            compatible = "zmk,behavior-hold-tap";
+            label = "B_MOUSE_LAYER_MOVE";
+            bindings = <&m_stay_mouse_layer>, <&m_to_layer0>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            flavor = "tap-preferred";
+        };
     };
 
     keymap {
@@ -340,10 +359,10 @@
 
         MOUSE {
             bindings = <
-&trans  &trans  &trans  &trans  &trans                      &m_min_min       &kp LC(T)  &trans           &b_paste_clean_paste 0 0  &kp LG(V)
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &b_copy_cut 0 0  &mkp MB1   &mkp MB3         &b_Rclick_Ctrl_A 0 0      &kp LA(LEFT)
-&trans  &trans  &trans  &trans  &trans  &trans      &kp F5  &kp LS(LC(T))    &kp LC(W)  &kp LC(LS(TAB))  &kp LC(TAB)               &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans                                                                 &kp LA(RIGHT)
+&trans  &trans  &trans  &trans  &trans                                       &m_min_min       &kp LC(T)  &trans           &b_paste_clean_paste 0 0  &kp LG(V)
+&trans  &trans  &trans  &trans  &trans                   &trans      &trans  &b_copy_cut 0 0  &mkp MB1   &mkp MB3         &b_Rclick_Ctrl_A 0 0      &kp LA(LEFT)
+&trans  &trans  &trans  &trans  &trans                   &trans      &kp F5  &kp LS(LC(T))    &kp LC(W)  &kp LC(LS(TAB))  &kp LC(TAB)               &trans
+&trans  &trans  &trans  &trans  &b_mouse_layer_move 0 0  &trans      &trans  &trans                                                                 &kp LA(RIGHT)
             >;
 
             sensor-bindings = <&inc_dec_kp 0 0>;
@@ -367,7 +386,7 @@
             >;
         };
 
-        layer_7 {
+        layer_8 {
             bindings = <
 &trans  &trans  &trans  &trans  &trans                      &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &trans  &trans  &trans  &trans
