@@ -251,8 +251,7 @@
         m_num7_half: m_num7_half {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&macro_tap>, <&kp N7 &kp F10 &kp ENTER &kp>;
-
+            bindings = <&kp KP_N7>;
             label = "M_NUM7_HALF";
         };
 
