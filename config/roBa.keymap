@@ -543,10 +543,10 @@
 
         l0_default_layer {
             bindings = <
-&kp Q      &kp W         &kp E         &kp R             &kp T                                                 &kp Y          &kp U  &lt 2 I    &kp O    &kp P
-&kp A      &kp S         &kp D         &kp F             &kp G        &kp LS(LG(S))             &b_scshot 0 0  &kp H          &kp J  &kp K      &kp L    &kp ENTER
-&kp Z      &kp X         &kp C         &kp V             &kp B        &trans                    &trans         &kp N          &kp M  &kp COMMA  &kp DOT  &trans
-&kp LCTRL  &kp LEFT_WIN  &kp LEFT_ALT  &lt 4 INT_HENKAN  &lt 3 SPACE  &lt_to_layer_0 0 TAB      &m_gemini_mic  &kp BACKSPACE                             &kp DEL
+&kp Q      &kp W         &kp E         &kp R       &kp T                                          &kp Y          &kp U  &lt 2 I    &kp O    &kp P
+&kp A      &kp S         &kp D         &kp F       &kp G        &kp LS(LG(S))      &b_scshot 0 0  &kp H          &kp J  &kp K      &kp L    &kp ENTER
+&kp Z      &kp X         &kp C         &kp V       &kp B        &trans             &trans         &kp N          &kp M  &kp COMMA  &kp DOT  &trans
+&kp LCTRL  &kp LEFT_WIN  &kp LEFT_ALT  &lt 4 CAPS  &lt 3 SPACE  &lt 4 TAB          &m_gemini_mic  &kp BACKSPACE                             &kp DEL
             >;
 
             sensor-bindings = <&inc_dec_kp PG_UP PAGE_DOWN>;
@@ -572,7 +572,7 @@
             >;
         };
 
-        l3 {
+        l3_shift {
             bindings = <
 &trans  &trans  &trans  &trans          &trans                                        &trans           &trans           &b_UpArrow_PgUp 0 0     &kp SLASH        &kp LG(V)
 &trans  &trans  &trans  &kp LEFT_SHIFT  &trans  &trans      &trans                    &kp HOME         &kp LEFT_ARROW   &b_haifun_underbar 0 0  &kp RIGHT_ARROW  &kp END
