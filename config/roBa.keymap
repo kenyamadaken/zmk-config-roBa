@@ -54,7 +54,7 @@
         to_layer_0: to_layer_0 {
             compatible = "zmk,behavior-macro-one-param";
             #binding-cells = <1>;
-            bindings = <&to 0 &macro_param_1to1 &kp MACRO_PLACEHOLDER>;
+            bindings = <&to 3 &macro_param_1to1 &kp MACRO_PLACEHOLDER>;
             label = "TO_LAYER_0";
         };
 
@@ -195,69 +195,63 @@
         m_to_layer0: m_to_layer0 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&to 0>;
+            bindings = <&to 3>;
             label = "M_TO_LAYER0";
         };
 
         m_stay_mouse_layer: m_stay_mouse_layer {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&mo 6>;
+            bindings = <&mo 0>;
             label = "M_STAY_MOUSE_LAYER";
         };
 
         m_num1_half: m_num1_half {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&macro_tap>, <&kp N1 &kp F10 &kp ENTER>;
-
+            bindings = <&kp KP_N1>;
             label = "M_NUM1_HALF";
         };
 
         m_num2_half: m_num2_half {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&macro_tap>, <&kp N2 &kp F10 &kp ENTER>;
-
+            bindings = <&kp KP_N2>;
             label = "M_NUM2_HALF";
         };
 
         m_num3_half: m_num3_half {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&macro_tap>, <&kp N3 &kp F10 &kp ENTER>;
-
+            bindings = <&kp KP_N3>;
             label = "M_NUM3_HALF";
         };
 
         m_num4_half: m_num4_half {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&macro_tap>, <&kp N4 &kp F10 &kp ENTER>;
-
+            bindings = <&kp KP_N4>;
             label = "M_NUM4_HALF";
         };
 
         m_num5_half: m_num5_half {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&macro_tap>, <&kp N5 &kp F10 &kp ENTER>;
-
+            bindings = <&kp KP_N5>;
             label = "M_NUM5_HALF";
         };
 
         m_num6_half: m_num6_half {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&macro_tap>, <&kp NUMBER_6 &kp F10 &kp ENTER>;
-
+            bindings = <&kp KP_N6>;
             label = "M_NUM6_HALF";
         };
 
         m_num7_half: m_num7_half {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&macro_tap>, <&kp N7 &kp F10 &kp ENTER>;
+            bindings = <&macro_tap>, <&kp N7 &kp F10 &kp ENTER &kp>;
 
             label = "M_NUM7_HALF";
         };
@@ -265,24 +259,21 @@
         m_num8_half: m_num8_half {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&macro_tap>, <&kp N8 &kp F10 &kp ENTER>;
-
+            bindings = <&kp KP_N8>;
             label = "M_NUM8_HALF";
         };
 
         m_num9_half: m_num9_half {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&macro_tap>, <&kp N9 &kp F10 &kp ENTER>;
-
+            bindings = <&kp KP_N9>;
             label = "M_NUM9_HALF";
         };
 
         m_num0_half: m_num0_half {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&macro_tap>, <&kp N0 &kp F10 &kp ENTER>;
-
+            bindings = <&kp KP_N0>;
             label = "M_NUM0_HALF";
         };
 
@@ -553,13 +544,33 @@
 
         default_layer {
             bindings = <
-&kp Q      &kp W         &kp E         &kp R             &kp T                                                 &kp Y          &kp U  &lt 7 I    &kp O    &kp P
+&kp Q      &kp W         &kp E         &kp R             &kp T                                                 &kp Y          &kp U  &lt 2 I    &kp O    &kp P
 &kp A      &kp S         &kp D         &kp F             &kp G        &kp LS(LG(S))             &b_scshot 0 0  &kp H          &kp J  &kp K      &kp L    &kp ENTER
 &kp Z      &kp X         &kp C         &kp V             &kp B        &trans                    &trans         &kp N          &kp M  &kp COMMA  &kp DOT  &m_alt_tab_stay
-&kp LCTRL  &kp LEFT_WIN  &kp LEFT_ALT  &lt 2 INT_HENKAN  &lt 1 SPACE  &lt_to_layer_0 6 TAB      &m_gemini_mic  &kp BACKSPACE                             &kp DEL
+&kp LCTRL  &kp LEFT_WIN  &kp LEFT_ALT  &lt 4 INT_HENKAN  &lt 3 SPACE  &lt_to_layer_0 0 TAB      &m_gemini_mic  &kp BACKSPACE                             &kp DEL
             >;
 
             sensor-bindings = <&inc_dec_kp PG_UP PAGE_DOWN>;
+        };
+
+        l1_MOUSE {
+            bindings = <
+&trans  &trans  &trans  &trans  &trans                                       &m_min_min       &kp LC(T)  &trans           &b_paste_clean_paste 0 0  &kp LG(V)
+&trans  &trans  &trans  &trans  &trans                   &trans      &trans  &b_copy_cut 0 0  &mkp MB1   &mkp MB3         &b_Rclick_Ctrl_A 0 0      &kp LA(LEFT)
+&trans  &trans  &trans  &trans  &trans                   &trans      &kp F5  &kp LS(LC(T))    &kp LC(W)  &kp LC(LS(TAB))  &kp LC(TAB)               &trans
+&trans  &trans  &trans  &trans  &b_mouse_layer_move 0 0  &trans      &trans  &trans                                                                 &kp LA(RIGHT)
+            >;
+
+            sensor-bindings = <&inc_dec_kp 0 0>;
+        };
+
+        SCROLL {
+            bindings = <
+&trans  &trans  &trans  &trans  &trans                      &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans                          &trans
+            >;
         };
 
         layer_1 {
@@ -607,26 +618,6 @@
             >;
 
             sensor-bindings = <&inc_dec_kp LC(PAGE_UP) LC(PAGE_DOWN)>;
-        };
-
-        MOUSE {
-            bindings = <
-&trans  &trans  &trans  &trans  &trans                                       &m_min_min       &kp LC(T)  &trans           &b_paste_clean_paste 0 0  &kp LG(V)
-&trans  &trans  &trans  &trans  &trans                   &trans      &trans  &b_copy_cut 0 0  &mkp MB1   &mkp MB3         &b_Rclick_Ctrl_A 0 0      &kp LA(LEFT)
-&trans  &trans  &trans  &trans  &trans                   &trans      &kp F5  &kp LS(LC(T))    &kp LC(W)  &kp LC(LS(TAB))  &kp LC(TAB)               &trans
-&trans  &trans  &trans  &trans  &b_mouse_layer_move 0 0  &trans      &trans  &trans                                                                 &kp LA(RIGHT)
-            >;
-
-            sensor-bindings = <&inc_dec_kp 0 0>;
-        };
-
-        SCROLL {
-            bindings = <
-&trans  &trans  &trans  &trans  &trans                      &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans                          &trans
-            >;
         };
 
         layer_6 {
