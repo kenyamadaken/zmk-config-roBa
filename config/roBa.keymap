@@ -554,10 +554,10 @@
 
         l1_MOUSE {
             bindings = <
-&trans  &trans  &trans  &trans  &trans                                       &m_min_min       &kp LC(T)  &trans           &b_paste_clean_paste 0 0  &kp LG(V)
-&trans  &trans  &trans  &trans  &trans                   &trans      &trans  &b_copy_cut 0 0  &mkp MB1   &mkp MB3         &b_Rclick_Ctrl_A 0 0      &kp LA(LEFT)
-&trans  &trans  &trans  &trans  &trans                   &trans      &kp F5  &kp LS(LC(T))    &kp LC(W)  &kp LC(LS(TAB))  &kp LC(TAB)               &trans
-&trans  &trans  &trans  &trans  &b_mouse_layer_move 0 0  &trans      &trans  &trans                                                                 &kp LA(RIGHT)
+&trans  &trans  &trans  &trans  &trans                      &m_min_min       &kp LC(T)  &trans           &b_paste_clean_paste 0 0  &kp LG(V)
+&trans  &trans  &trans  &trans  &trans  &trans      &trans  &b_copy_cut 0 0  &mkp MB1   &mkp MB3         &b_Rclick_Ctrl_A 0 0      &kp LA(LEFT)
+&trans  &trans  &trans  &trans  &trans  &trans      &kp F5  &kp LS(LC(T))    &kp LC(W)  &kp LC(LS(TAB))  &kp LC(TAB)               &trans
+&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans                                                                 &kp LA(RIGHT)
             >;
 
             sensor-bindings = <&inc_dec_kp 0 0>;
