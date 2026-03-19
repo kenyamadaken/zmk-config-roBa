@@ -583,10 +583,10 @@
 
         l4_number {
             bindings = <
-&trans  &trans  &trans  &trans  &trans                      &trans     &b_num1 0 0  &b_num2 0 0  &b_num3 0 0  &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &kp MINUS  &b_num4 0 0  &b_num5 0 0  &b_num6 0 0  &b_num0 0 0
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans     &b_num7 0 0  &b_num8 0 0  &b_num9 0 0  &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans                                            &trans
+&trans  &trans  &trans  &trans  &trans                      &trans     &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &trans
+&trans  &trans  &trans  &trans  &trans  &trans      &trans  &kp MINUS  &kp NUMBER_4  &kp N5        &kp NUMBER_6  &kp N0
+&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans     &kp N7        &kp N8        &kp N9        &trans
+&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans                                               &trans
             >;
         };
 
