@@ -545,7 +545,7 @@
             bindings = <
 &kp Q      &kp W         &kp E         &kp R        &kp T                                          &kp Y          &kp U  &lt 2 I    &kp O    &kp P
 &kp A      &kp S         &kp D         &kp F        &kp G        &kp LS(LG(S))      &b_scshot 0 0  &kp H          &kp J  &kp K      &kp L    &kp ENTER
-&kp Z      &kp X         &kp C         &kp V        &kp B        &kp F5             &trans         &kp N          &kp M  &kp COMMA  &kp DOT  &trans
+&kp Z      &kp X         &kp C         &kp V        &kp B        &kp C_PP           &trans         &kp N          &kp M  &kp COMMA  &kp DOT  &trans
 &kp LCTRL  &kp LEFT_WIN  &kp LEFT_ALT  &lt 4 GRAVE  &lt 3 SPACE  &lt 4 TAB          &m_gemini_mic  &kp BACKSPACE                             &trans
             >;
 
