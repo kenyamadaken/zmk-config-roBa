@@ -425,6 +425,16 @@
             tapping-term-ms = <200>;
             flavor = "tap-preferred";
         };
+
+        b_AltTab: b_AltTab {
+            compatible = "zmk,behavior-hold-tap";
+            label = "B_ALTTAB";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <150>;
+            flavor = "tap-preferred";
+        };
     };
 
     keymap {
@@ -432,10 +442,10 @@
 
         l0_MOUSE {
             bindings = <
-&kp ESCAPE  &kp LG(NUMBER_1)  &kp LG(NUMBER_2)  &trans  &trans                      &trans         &trans                               &lt 2 LA(LEFT_ARROW)  &b_paste_clean_paste LC(LS(V)) LC(V)  &trans
-&trans      &trans            &trans            &trans  &trans  &trans      &trans  &trans         &mkp MB1                             &mkp MB3              &mkp MB2                              &kp ENTER
-&trans      &trans            &trans            &trans  &trans  &trans      &trans  &trans         &b_CtrlW_CtrlShiftT LS(LC(T)) LC(W)  &kp LC(LS(TAB))       &kp LC(TAB)                           &trans
-&trans      &trans            &trans            &trans  &trans  &to 1       &trans  &kp BACKSPACE                                                                                                   &trans
+&kp ESCAPE  &kp LG(NUMBER_1)  &kp LG(NUMBER_2)  &trans  &trans                      &trans         &trans                               &lt 2 LA(LEFT_ARROW)  &trans    &trans
+&trans      &trans            &trans            &trans  &trans  &trans      &trans  &trans         &mkp MB1                             &mkp MB3              &mkp MB2  &kp ENTER
+&trans      &trans            &trans            &trans  &trans  &trans      &trans  &trans         &b_CtrlW_CtrlShiftT LS(LC(T)) LC(W)  &trans                &trans    &b_AltTab F14 F13
+&trans      &trans            &trans            &trans  &trans  &to 1       &trans  &kp BACKSPACE                                                                       &trans
             >;
 
             sensor-bindings = <&inc_dec_kp 0 0>;
