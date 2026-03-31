@@ -416,123 +416,14 @@
             flavor = "tap-preferred";
         };
 
-        b_mouse_layer_move: b_mouse_layer_move {
+        b_CtrlW_CtrlShiftT: b_CtrlW_CtrlShiftT {
             compatible = "zmk,behavior-hold-tap";
-            label = "B_MOUSE_LAYER_MOVE";
-            bindings = <&m_stay_mouse_layer>, <&m_to_layer0>;
-
+            label = "B_CTRLW_CTRLSHIFTT";
             #binding-cells = <2>;
+            bindings = <&kp>, <&kp>;
+
             tapping-term-ms = <200>;
             flavor = "tap-preferred";
-        };
-
-        b_num1: b_num1 {
-            compatible = "zmk,behavior-hold-tap";
-            label = "B_NUM1";
-            bindings = <&m_num1_full>, <&m_num1_half>;
-
-            #binding-cells = <2>;
-            flavor = "tap-preferred";
-            tapping-term-ms = <200>;
-        };
-
-        b_num2: b_num2 {
-            compatible = "zmk,behavior-hold-tap";
-            label = "B_NUM2";
-            bindings = <&m_num2_full>, <&m_num2_half>;
-
-            #binding-cells = <2>;
-            flavor = "tap-preferred";
-            tapping-term-ms = <200>;
-        };
-
-        b_num3: b_num3 {
-            compatible = "zmk,behavior-hold-tap";
-            label = "B_NUM3";
-            bindings = <&m_num3_full>, <&m_num3_half>;
-
-            #binding-cells = <2>;
-            flavor = "tap-preferred";
-            tapping-term-ms = <200>;
-        };
-
-        b_num4: b_num4 {
-            compatible = "zmk,behavior-hold-tap";
-            label = "B_NUM4";
-            bindings = <&m_num4_full>, <&m_num4_half>;
-
-            #binding-cells = <2>;
-            flavor = "tap-preferred";
-            tapping-term-ms = <200>;
-        };
-
-        b_num5: b_num5 {
-            compatible = "zmk,behavior-hold-tap";
-            label = "B_NUM5";
-            bindings = <&m_num5_full>, <&m_num5_half>;
-
-            #binding-cells = <2>;
-            flavor = "tap-preferred";
-            tapping-term-ms = <200>;
-        };
-
-        b_num6: b_num6 {
-            compatible = "zmk,behavior-hold-tap";
-            label = "B_NUM6";
-            bindings = <&m_num6_full>, <&m_num6_half>;
-
-            #binding-cells = <2>;
-            flavor = "tap-preferred";
-            tapping-term-ms = <200>;
-        };
-
-        b_num7: b_num7 {
-            compatible = "zmk,behavior-hold-tap";
-            label = "B_NUM7";
-            bindings = <&m_num7_full>, <&m_num7_half>;
-
-            #binding-cells = <2>;
-            flavor = "tap-preferred";
-            tapping-term-ms = <200>;
-        };
-
-        b_num8: b_num8 {
-            compatible = "zmk,behavior-hold-tap";
-            label = "B_NUM8";
-            bindings = <&m_num8_full>, <&m_num8_half>;
-
-            #binding-cells = <2>;
-            flavor = "tap-preferred";
-            tapping-term-ms = <200>;
-        };
-
-        b_num9: b_num9 {
-            compatible = "zmk,behavior-hold-tap";
-            label = "B_NUM9";
-            bindings = <&m_num9_full>, <&m_num9_half>;
-
-            #binding-cells = <2>;
-            flavor = "tap-preferred";
-            tapping-term-ms = <200>;
-        };
-
-        b_num0: b_num0 {
-            compatible = "zmk,behavior-hold-tap";
-            label = "B_NUM0";
-            bindings = <&m_num0_full>, <&m_num0_half>;
-
-            #binding-cells = <2>;
-            flavor = "tap-preferred";
-            tapping-term-ms = <200>;
-        };
-
-        new_behavior: new_behavior {
-            compatible = "zmk,behavior-hold-tap";
-            label = "NEW_BEHAVIOR";
-            bindings = <&none>, <&kp>;
-
-            #binding-cells = <2>;
-            tapping-term-ms = <3>;
         };
     };
 
@@ -541,10 +432,10 @@
 
         l0_MOUSE {
             bindings = <
-&kp ESCAPE  &kp LG(NUMBER_1)  &kp LG(NUMBER_2)  &trans  &trans                      &kp F11                   &kp LC(T)  &lt 2 AT_SIGN    &b_paste_clean_paste LC(LS(V)) LC(V)  &kp LG(V)
-&trans      &trans            &trans            &trans  &trans  &trans      &trans  &b_copy_cut K_CUT K_COPY  &mkp MB1   &mkp MB3         &mkp MB2                              &kp ENTER
-&trans      &trans            &trans            &trans  &trans  &trans      &kp F5  &kp LS(LC(T))             &kp LC(W)  &kp LC(LS(TAB))  &kp LC(TAB)                           &trans
-&trans      &trans            &trans            &trans  &trans  &to 1       &trans  &kp BACKSPACE                                                                               &kp LA(RIGHT)
+&kp ESCAPE  &kp LG(NUMBER_1)  &kp LG(NUMBER_2)  &trans  &trans                      &trans         &trans                               &lt 2 LA(LEFT_ARROW)  &b_paste_clean_paste LC(LS(V)) LC(V)  &trans
+&trans      &trans            &trans            &trans  &trans  &trans      &trans  &trans         &mkp MB1                             &mkp MB3              &mkp MB2                              &kp ENTER
+&trans      &trans            &trans            &trans  &trans  &trans      &trans  &trans         &b_CtrlW_CtrlShiftT LS(LC(T)) LC(W)  &kp LC(LS(TAB))       &kp LC(TAB)                           &trans
+&trans      &trans            &trans            &trans  &trans  &to 1       &trans  &kp BACKSPACE                                                                                                   &trans
             >;
 
             sensor-bindings = <&inc_dec_kp 0 0>;
