@@ -113,17 +113,6 @@
             label = "M_PASTE";
         };
 
-        m_min_min: m_min_min {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings =
-                <&kp LG(DOWN_ARROW)>,
-                <&macro_wait_time 50>,
-                <&kp LG(DOWN)>;
-
-            label = "M_MIN_MIN";
-        };
-
         m_alt_tab_stay: m_alt_tab_stay {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -380,7 +369,7 @@
         b_copy_cut: b_copy_cut {
             compatible = "zmk,behavior-hold-tap";
             label = "B_COPY_CUT";
-            bindings = <&m_cut>, <&m_copy>;
+            bindings = <&kp>, <&kp>;
 
             #binding-cells = <2>;
             tapping-term-ms = <200>;
@@ -390,7 +379,7 @@
         b_paste_clean_paste: b_paste_clean_paste {
             compatible = "zmk,behavior-hold-tap";
             label = "B_PASTE_CLEAN_PASTE";
-            bindings = <&m_clean_paste>, <&m_paste>;
+            bindings = <&kp>, <&kp>;
 
             #binding-cells = <2>;
             tapping-term-ms = <150>;
@@ -552,10 +541,10 @@
 
         l0_MOUSE {
             bindings = <
-&kp ESCAPE  &trans  &trans  &trans  &trans                      &m_min_min       &kp LC(T)  &lt 2 AT_SIGN    &b_paste_clean_paste 0 0  &kp LG(V)
-&trans      &trans  &trans  &trans  &trans  &trans      &trans  &b_copy_cut 0 0  &mkp MB1   &mkp MB3         &b_Rclick_Ctrl_A 0 0      &kp LA(LEFT)
-&trans      &trans  &trans  &trans  &trans  &trans      &kp F5  &kp LS(LC(T))    &kp LC(W)  &kp LC(LS(TAB))  &kp LC(TAB)               &trans
-&trans      &trans  &trans  &trans  &trans  &to 1       &trans  &trans                                                                 &kp LA(RIGHT)
+&kp ESCAPE  &kp LG(NUMBER_1)  &kp LG(NUMBER_2)  &trans  &trans                      &kp F11                   &kp LC(T)  &lt 2 AT_SIGN    &b_paste_clean_paste LC(LS(V)) LC(V)  &kp LG(V)
+&trans      &trans            &trans            &trans  &trans  &trans      &trans  &b_copy_cut K_CUT K_COPY  &mkp MB1   &mkp MB3         &mkp MB2                              &kp ENTER
+&trans      &trans            &trans            &trans  &trans  &trans      &kp F5  &kp LS(LC(T))             &kp LC(W)  &kp LC(LS(TAB))  &kp LC(TAB)                           &trans
+&trans      &trans            &trans            &trans  &trans  &to 1       &trans  &kp BACKSPACE                                                                               &kp LA(RIGHT)
             >;
 
             sensor-bindings = <&inc_dec_kp 0 0>;
