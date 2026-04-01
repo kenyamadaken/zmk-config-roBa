@@ -23,7 +23,7 @@
 };
 
 / {
-    // --- 1. マクロ定義 (複数のキーは必ずカンマで区切る) ---
+    // --- 1. マクロ定義 ---
     macros {
         m_to_layer0: m_to_layer0 {
             compatible = "zmk,behavior-macro";
@@ -110,10 +110,11 @@
             label = "M_MKP_RIGHT";
         };
 
+        // ★原因のキーコードを公式の「C_AC_BACK」に修正しました
         m_back: m_back {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp BROWSER_BACK>;
+            bindings = <&kp C_AC_BACK>;
             label = "M_BACK";
         };
 
@@ -146,7 +147,7 @@
         };
     };
 
-    // --- 2. ベヘイビア定義 (HoldとTapは必ずカンマで区切る) ---
+    // --- 2. ベヘイビア定義 ---
     behaviors {
         lt_to_layer_0: lt_to_layer_0 {
             compatible = "zmk,behavior-hold-tap";
