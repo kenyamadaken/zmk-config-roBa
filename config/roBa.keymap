@@ -4,6 +4,7 @@
 #include <dt-bindings/zmk/pointing.h>
 
 // --- レイヤー定義 ---
+
 #define L_MOUSE  0
 #define L_TYPING 1
 #define L_SCROLL 2
@@ -24,6 +25,7 @@
 
 / {
     // --- 1. マクロ（一番上に置く） ---
+
     macros {
         m_to_layer0: m_to_layer0 {
             compatible = "zmk,behavior-macro";
@@ -49,83 +51,34 @@
         m_gemini_mic: m_gemini_mic {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LG(NUMBER_1)>, <&macro_wait_time 200>, <&kp LA(D)>, <&macro_wait_time 100>, <&kp LS(TAB) &kp LS(TAB) &kp LS(TAB) &kp ENTER>;
+            bindings =
+                <&kp LG(NUMBER_1)>,
+                <&macro_wait_time 200>,
+                <&kp LA(D)>,
+                <&macro_wait_time 100>,
+                <&kp LS(TAB) &kp LS(TAB) &kp LS(TAB) &kp ENTER>;
+
             label = "M_GEMINI_MIC";
-        };
-
-        m_down_arrow: m_down_arrow {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp DOWN_ARROW>;
-            label = "M_DOWN_ARROW";
-        };
-
-        m_up_arrow: m_up_arrow {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp UP_ARROW>;
-            label = "M_UP_ARROW";
-        };
-
-        m_PgUp: m_PgUp {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp PG_UP>;
-            label = "M_PGUP";
-        };
-
-        m_haifun: m_haifun {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp MINUS>;
-            label = "M_HAFUN";
-        };
-
-        m_underbar: m_underbar {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp LS(NON_US_BACKSLASH)>;
-            label = "M_UNDERBAR";
-        };
-
-        m_Ctrl_A: m_Ctrl_A {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp LC(A)>;
-            label = "M_CTRL_A";
-        };
-
-        m_mkp_right: m_mkp_right {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&mkp MB2>;
-            label = "M_MKP_RIGHT";
         };
     };
 
     // --- 2. ベヘイビア（マクロの下に置く） ---
+
     behaviors {
         lt_to_layer_0: lt_to_layer_0 {
             compatible = "zmk,behavior-hold-tap";
             label = "LAYER_TAP_TO_0";
             bindings = <&mo>, <&m_to_layer0>;
+
             #binding-cells = <2>;
             tapping-term-ms = <200>;
-        };
-
-        b_scshot: b_scshot {
-            compatible = "zmk,behavior-hold-tap";
-            label = "B_SCSHOT";
-            #binding-cells = <2>;
-            bindings = <&m_win_shift_s>, <&m_alt_prtsc>;
-            tapping-term-ms = <150>;
-            flavor = "tap-preferred";
         };
 
         b_UpArrow_PgUp: b_UpArrow_PgUp {
             compatible = "zmk,behavior-hold-tap";
             label = "B_UPARROW_PGUP";
             bindings = <&m_PgUp>, <&m_up_arrow>;
+
             #binding-cells = <2>;
             tapping-term-ms = <200>;
             flavor = "tap-preferred";
@@ -135,6 +88,7 @@
             compatible = "zmk,behavior-hold-tap";
             label = "B_HAIFUN_UNDERBAR";
             bindings = <&m_underbar>, <&m_haifun>;
+
             #binding-cells = <2>;
             tapping-term-ms = <200>;
             flavor = "tap-preferred";
@@ -144,6 +98,7 @@
             compatible = "zmk,behavior-hold-tap";
             label = "B_RCLICK_CTRL_A";
             bindings = <&m_Ctrl_A>, <&m_mkp_right>;
+
             #binding-cells = <2>;
             tapping-term-ms = <200>;
             flavor = "tap-preferred";
@@ -153,67 +108,127 @@
             compatible = "zmk,behavior-hold-tap";
             label = "B_ALTTAB";
             bindings = <&kp>, <&kp>;
+
             #binding-cells = <2>;
             tapping-term-ms = <150>;
             flavor = "tap-preferred";
         };
 
-        b_CtrlW_CtrlShiftT: b_CtrlW_CtrlShiftT {
+        b_CtrlTab: b_CtrlTab {
             compatible = "zmk,behavior-hold-tap";
-            label = "B_CTRLW_CTRLSHIFTT";
-            #binding-cells = <2>;
+            label = "B_CTRLTAB";
             bindings = <&kp>, <&kp>;
-            tapping-term-ms = <200>;
-            flavor = "tap-preferred";
-        };
 
-        b_copy_cut: b_copy_cut {
-            compatible = "zmk,behavior-hold-tap";
-            label = "B_COPY_CUT";
-            bindings = <&kp>, <&kp>;
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            flavor = "tap-preferred";
-        };
-
-        b_paste_clean_paste: b_paste_clean_paste {
-            compatible = "zmk,behavior-hold-tap";
-            label = "B_PASTE_CLEAN_PASTE";
-            bindings = <&kp>, <&kp>;
             #binding-cells = <2>;
             tapping-term-ms = <150>;
+            flavor = "tap-preferred";
+        };
+
+        b_CtrlShiftTab: b_CtrlShiftTab {
+            compatible = "zmk,behavior-hold-tap";
+            label = "B_CTRLSHIFTTAB";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <150>;
+            flavor = "tap-preferred";
+        };
+
+        b_Win2_Win6: b_Win2_Win6 {
+            compatible = "zmk,behavior-hold-tap";
+            label = "B_WIN2_WIN6";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <100>;
+            flavor = "tap-preferred";
+        };
+
+        b_Win3_Win7: b_Win3_Win7 {
+            compatible = "zmk,behavior-hold-tap";
+            label = "B_WIN3_WIN7";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <100>;
+            flavor = "tap-preferred";
+        };
+
+        b_Win4_Win8: b_Win4_Win8 {
+            compatible = "zmk,behavior-hold-tap";
+            label = "B_WIN4_WIN8";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <100>;
+            flavor = "tap-preferred";
+        };
+
+        b_Win5_Win9: b_Win5_Win9 {
+            compatible = "zmk,behavior-hold-tap";
+            label = "B_WIN5_WIN9";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <100>;
+            flavor = "tap-preferred";
+        };
+
+        b_Win1_Esc: b_Win1_Esc {
+            compatible = "zmk,behavior-hold-tap";
+            label = "B_WIN1_ESC";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <100>;
             flavor = "tap-preferred";
         };
     };
 
     combos {
         compatible = "zmk,combos";
-        tab { bindings = <&kp TAB>; key-positions = <11 12>; };
-        shift_tab { bindings = <&kp LS(TAB)>; key-positions = <12 13>; };
-        double_quotation { bindings = <&kp DOUBLE_QUOTES>; key-positions = <20 21>; };
-        eq { bindings = <&kp EQUAL>; key-positions = <24 25>; };
+
+        tab {
+            bindings = <&kp TAB>;
+            key-positions = <11 12>;
+        };
+
+        shift_tab {
+            bindings = <&kp LS(TAB)>;
+            key-positions = <12 13>;
+        };
+
+        double_quotation {
+            bindings = <&kp DOUBLE_QUOTES>;
+            key-positions = <20 21>;
+        };
+
+        eq {
+            bindings = <&kp EQUAL>;
+            key-positions = <24 25>;
+        };
     };
 
     keymap {
         compatible = "zmk,keymap";
 
-        l0_MOUSE {
+        MOUSE {
             bindings = <
-&kp ESCAPE  &kp LG(NUMBER_1)  &kp LG(NUMBER_2)  &trans  &trans                      &trans         &trans                                &lt L_SCROLL LA(LEFT_ARROW)  &trans    &trans
-&trans      &trans            &trans            &trans  &trans  &trans      &trans  &trans         &mkp MB1                              &mkp MB3              &mkp MB2  &kp ENTER
-&trans      &trans            &trans            &trans  &trans  &trans      &trans  &trans         &b_CtrlW_CtrlShiftT LS(LC(T)) LC(W)  &trans                &trans    &b_AltTab F14 F13
-&trans      &trans            &trans            &trans  &trans  &to L_TYPING       &trans  &kp BACKSPACE                                                                      &trans
+&b_Win1_Esc ESCAPE LG(NUMBER_1)  &b_Win2_Win6 LG(NUMBER_6) LG(NUMBER_2)  &b_Win3_Win7 LG(N7) LG(NUMBER_3)  &b_Win4_Win8 LG(N8) LG(NUMBER_4)  &b_Win5_Win9 LG(N9) LG(N5)                                                    &trans                      &trans    &lt 1 A                                &b_CtrlV_CtrlShiftV LC(LS(V)) LC(V)  &trans
+&trans                           &trans                                  &trans                            &trans                            &trans                      &trans      &b_scnshot LS(LG(S)) LA(PRINTSCREEN)  &b_CtrlC_CtrlX LC(X) LC(C)  &mkp MB1  &mkp MB3                               &mkp MB2                             &kp ENTER
+&trans                           &trans                                  &trans                            &trans                            &trans                      &trans      &trans                                &trans                      &trans    &b_CtrlShiftTab LC(LS(T)) LS(LC(TAB))  &b_CtrlTab LA(RIGHT) LC(TAB)         &trans
+&trans                           &trans                                  &trans                            &trans                            &trans                      &to 2       &trans                                &kp BACKSPACE                                                                                                     &trans
             >;
-            sensor-bindings = <&inc_dec_kp 0 0>;
         };
 
         l1_typing {
             bindings = <
-&kp Q      &kp W         &kp E         &kp R        &kp T                                          &kp Y          &kp U  &lt L_SCROLL I    &kp O    &kp P
-&kp A      &kp S         &kp D         &kp F        &kp G        &kp LS(LG(S))      &b_scshot 0 0  &kp H          &kp J  &kp K      &kp L    &kp ENTER
-&kp Z      &kp X         &kp C         &kp V        &kp B        &kp C_PP           &trans         &kp N          &kp M  &kp COMMA  &kp DOT  &trans
-&kp LCTRL  &kp LEFT_WIN  &kp LEFT_ALT  &lt L_NUM GRAVE  &lt L_SYM SPACE  &to L_MOUSE              &m_gemini_mic  &kp BACKSPACE                             &trans
+&kp Q      &kp W         &kp E         &kp R            &kp T                                              &kp Y          &kp U  &lt L_SCROLL I  &kp O    &kp P
+&kp A      &kp S         &kp D         &kp F            &kp G            &kp LS(LG(S))      &b_scshot 0 0  &kp H          &kp J  &kp K           &kp L    &kp ENTER
+&kp Z      &kp X         &kp C         &kp V            &kp B            &kp C_PP           &trans         &kp N          &kp M  &kp COMMA       &kp DOT  &trans
+&kp LCTRL  &kp LEFT_WIN  &kp LEFT_ALT  &lt L_NUM GRAVE  &lt L_SYM SPACE  &to L_MOUSE        &m_gemini_mic  &kp BACKSPACE                                  &trans
             >;
+
             sensor-bindings = <&inc_dec_kp PG_UP PAGE_DOWN>;
         };
 
@@ -228,10 +243,10 @@
 
         l3_shift {
             bindings = <
-&trans  &trans  &trans                    &trans            &trans                      &trans        &trans           &b_UpArrow_PgUp 0 0     &kp SLASH        &kp LG(V)
-&trans  &trans  &b_paste_clean_paste 0 0  &b_copy_cut 0 0   &trans  &trans      &trans  &kp HOME      &kp LEFT_ARROW   &b_haifun_underbar 0 0  &kp RIGHT_ARROW  &kp END
-&trans  &trans  &trans                    &trans            &trans  &trans      &trans  &kp QUESTION  &kp EXCLAMATION  &m_down_arrow           &trans           &trans
-&trans  &trans  &trans                    &trans            &trans  &trans      &trans  &kp DELETE                                                              &trans
+&trans  &trans  &trans                    &trans           &trans                      &trans        &trans           &b_UpArrow_PgUp 0 0     &kp SLASH        &kp LG(V)
+&trans  &trans  &b_paste_clean_paste 0 0  &b_copy_cut 0 0  &trans  &trans      &trans  &kp HOME      &kp LEFT_ARROW   &b_haifun_underbar 0 0  &kp RIGHT_ARROW  &kp END
+&trans  &trans  &trans                    &trans           &trans  &trans      &trans  &kp QUESTION  &kp EXCLAMATION  &m_down_arrow           &trans           &trans
+&trans  &trans  &trans                    &trans           &trans  &trans      &trans  &kp DELETE                                                              &trans
             >;
         };
 
@@ -246,20 +261,21 @@
 
         layer_5_bt {
             bindings = <
-&trans  &trans        &trans        &trans        &trans                            &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4
-&trans  &trans        &trans        &trans        &trans  &trans      &trans        &trans        &trans        &trans        &trans        &trans
-&trans  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &trans  &trans      &bootloader   &trans        &trans        &trans        &trans        &bt BT_CLR
-&trans  &trans        &trans        &trans        &trans  &trans      &trans        &trans                                                  &bt BT_CLR_ALL
+&trans  &trans        &trans        &trans        &trans                           &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4
+&trans  &trans        &trans        &trans        &trans  &trans      &trans       &trans        &trans        &trans        &trans        &trans
+&trans  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &trans  &trans      &bootloader  &trans        &trans        &trans        &trans        &bt BT_CLR
+&trans  &trans        &trans        &trans        &trans  &trans      &trans       &trans                                                  &bt BT_CLR_ALL
             >;
         };
 
         l6_AUTO_MOUSE {
             bindings = <
-&kp ESCAPE  &kp LG(NUMBER_1)  &kp LG(NUMBER_2)  &trans  &trans                      &trans         &trans                                &lt L_SCROLL LA(LEFT_ARROW)  &trans    &trans
-&trans      &trans            &trans            &trans  &trans  &trans      &trans  &trans         &mkp MB1                              &mkp MB3              &mkp MB2  &kp ENTER
-&trans      &trans            &trans            &trans  &trans  &trans      &trans  &trans         &b_CtrlW_CtrlShiftT LS(LC(T)) LC(W)   &trans                &trans    &b_AltTab F14 F13
-&trans      &trans            &trans            &trans  &trans  &to L_TYPING       &trans  &kp BACKSPACE                                                                      &trans
+&kp ESCAPE  &kp LG(NUMBER_1)  &kp LG(NUMBER_2)  &trans  &trans                            &trans         &trans                               &lt L_SCROLL LA(LEFT_ARROW)  &trans    &trans
+&trans      &trans            &trans            &trans  &trans  &trans            &trans  &trans         &mkp MB1                             &mkp MB3                     &mkp MB2  &kp ENTER
+&trans      &trans            &trans            &trans  &trans  &trans            &trans  &trans         &b_CtrlW_CtrlShiftT LS(LC(T)) LC(W)  &trans                       &trans    &b_AltTab F14 F13
+&trans      &trans            &trans            &trans  &trans  &to L_TYPING      &trans  &kp BACKSPACE                                                                              &trans
             >;
+
             sensor-bindings = <&inc_dec_kp 0 0>;
         };
     };
