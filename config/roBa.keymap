@@ -65,16 +65,6 @@
     // --- 2. ベヘイビア（マクロの下に置く） ---
 
     behaviors {
-        b_UpArrow_PgUp: b_UpArrow_PgUp {
-            compatible = "zmk,behavior-hold-tap";
-            label = "B_UPARROW_PGUP";
-            bindings = <&m_PgUp>, <&m_up_arrow>;
-
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            flavor = "tap-preferred";
-        };
-
         b_haifun_underbar: b_haifun_underbar {
             compatible = "zmk,behavior-hold-tap";
             label = "B_HAIFUN_UNDERBAR";
@@ -244,7 +234,7 @@
 
         l3_shift {
             bindings = <
-&trans  &trans  &trans  &trans  &trans                      &trans        &trans           &b_UpArrow_PgUp 0 0     &kp SLASH        &kp LG(V)
+&trans  &trans  &trans  &trans  &trans                      &trans        &trans           &none                   &kp SLASH        &kp LG(V)
 &trans  &trans  &trans  &trans  &trans  &trans      &trans  &kp HOME      &kp LEFT_ARROW   &b_haifun_underbar 0 0  &kp RIGHT_ARROW  &kp END
 &trans  &trans  &trans  &trans  &trans  &trans      &trans  &kp QUESTION  &kp EXCLAMATION  &trans                  &trans           &trans
 &trans  &trans  &trans  &trans  &trans  &trans      &trans  &kp DELETE                                                              &trans
