@@ -23,7 +23,7 @@
 };
 
 / {
-    // --- 1. マクロ定義 (全ての部品の基礎) ---
+    // --- 1. マクロ定義 (命令をカンマで区切る) ---
     macros {
         m_to_layer0: m_to_layer0 {
             compatible = "zmk,behavior-macro";
@@ -31,149 +31,171 @@
             bindings = <&to L_MOUSE>;
             label = "M_TO_LAYER0";
         };
+
         m_alt_prtsc: m_alt_prtsc {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp LA(PRINTSCREEN)>;
             label = "M_ALT_PRTSC";
         };
+
         m_win_shift_s: m_win_shift_s {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp LG(LS(S))>;
             label = "M_WIN_SHIFT_S";
         };
+
         m_gemini_mic: m_gemini_mic {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LG(NUMBER_1)>, <&macro_wait_time 200>, <&kp LA(D)>, <&macro_wait_time 100>, <&kp LS(TAB) &kp LS(TAB) &kp LS(TAB) &kp ENTER>;
+            bindings = 
+                <&kp LG(NUMBER_1)>, 
+                <&macro_wait_time 200>, 
+                <&kp LA(D)>, 
+                <&macro_wait_time 100>, 
+                <&kp LS(TAB)>, 
+                <&kp LS(TAB)>, 
+                <&kp LS(TAB)>, 
+                <&kp ENTER>;
             label = "M_GEMINI_MIC";
         };
+
         m_up_arrow: m_up_arrow {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp UP_ARROW>;
             label = "M_UP_ARROW";
         };
+
         m_down_arrow: m_down_arrow {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp DOWN_ARROW>;
             label = "M_DOWN_ARROW";
         };
+
         m_PgUp: m_PgUp {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp PG_UP>;
             label = "M_PGUP";
         };
+
         m_haifun: m_haifun {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp MINUS>;
             label = "M_HAFUN";
         };
+
         m_underbar: m_underbar {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp LS(NON_US_BACKSLASH)>;
             label = "M_UNDERBAR";
         };
+
         m_Ctrl_A: m_Ctrl_A {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp LC(A)>;
             label = "M_CTRL_A";
         };
+
         m_mkp_right: m_mkp_right {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&mkp MB2>;
             label = "M_MKP_RIGHT";
         };
+
         m_back: m_back {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp BROWSER_BACK>;
             label = "M_BACK";
         };
-        m_stay_mouse_layer: m_stay_mouse_layer {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&mo L_AUTO>;
-            label = "M_STAY_MOUSE_LAYER";
-        };
     };
 
-    // --- 2. ベヘイビア定義 (マクロを組み合わせてボタンを作る) ---
+    // --- 2. ベヘイビア定義 (カッコの中にカンマを入れないのが正解) ---
     behaviors {
         lt_to_layer_0: lt_to_layer_0 {
             compatible = "zmk,behavior-hold-tap";
             label = "LAYER_TAP_TO_0";
-            bindings = <&mo>, <&m_to_layer0>;
+            bindings = <&mo &m_to_layer0>;
             #binding-cells = <2>;
             tapping-term-ms = <200>;
+            flavor = "tap-preferred";
         };
+
         b_scshot: b_scshot {
             compatible = "zmk,behavior-hold-tap";
             label = "B_SCSHOT";
             #binding-cells = <2>;
-            bindings = <&m_win_shift_s>, <&m_alt_prtsc>;
+            bindings = <&m_win_shift_s &m_alt_prtsc>;
             tapping-term-ms = <150>;
             flavor = "tap-preferred";
         };
+
         b_UpArrow_PgUp: b_UpArrow_PgUp {
             compatible = "zmk,behavior-hold-tap";
             label = "B_UPARROW_PGUP";
-            bindings = <&m_PgUp>, <&m_up_arrow>;
+            bindings = <&m_PgUp &m_up_arrow>;
             #binding-cells = <2>;
             tapping-term-ms = <200>;
             flavor = "tap-preferred";
         };
+
         b_haifun_underbar: b_haifun_underbar {
             compatible = "zmk,behavior-hold-tap";
             label = "B_HAIFUN_UNDERBAR";
-            bindings = <&m_underbar>, <&m_haifun>;
+            bindings = <&m_underbar &m_haifun>;
             #binding-cells = <2>;
             tapping-term-ms = <200>;
             flavor = "tap-preferred";
         };
+
         b_Rclick_Ctrl_A: b_Rclick_Ctrl_A {
             compatible = "zmk,behavior-hold-tap";
             label = "B_RCLICK_CTRL_A";
-            bindings = <&m_Ctrl_A>, <&m_mkp_right>;
+            bindings = <&m_Ctrl_A &m_mkp_right>;
             #binding-cells = <2>;
             tapping-term-ms = <200>;
             flavor = "tap-preferred";
         };
+
         b_AltTab: b_AltTab {
             compatible = "zmk,behavior-hold-tap";
             label = "B_ALTTAB";
-            bindings = <&kp>, <&kp>;
+            bindings = <&kp &kp>;
             #binding-cells = <2>;
             tapping-term-ms = <150>;
             flavor = "tap-preferred";
         };
+
         b_CtrlW_CtrlShiftT: b_CtrlW_CtrlShiftT {
             compatible = "zmk,behavior-hold-tap";
             label = "B_CTRLW_CTRLSHIFTT";
             #binding-cells = <2>;
-            bindings = <&kp>, <&kp>;
+            bindings = <&kp &kp>;
             tapping-term-ms = <200>;
             flavor = "tap-preferred";
         };
+
         b_copy_cut: b_copy_cut {
             compatible = "zmk,behavior-hold-tap";
             label = "B_COPY_CUT";
-            bindings = <&kp>, <&kp>;
+            bindings = <&kp &kp>;
             #binding-cells = <2>;
             tapping-term-ms = <200>;
             flavor = "tap-preferred";
         };
+
         b_paste_clean_paste: b_paste_clean_paste {
             compatible = "zmk,behavior-hold-tap";
             label = "B_PASTE_CLEAN_PASTE";
-            bindings = <&kp>, <&kp>;
+            bindings = <&kp &kp>;
             #binding-cells = <2>;
             tapping-term-ms = <150>;
             flavor = "tap-preferred";
