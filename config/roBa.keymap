@@ -65,15 +65,6 @@
     // --- 2. ベヘイビア（マクロの下に置く） ---
 
     behaviors {
-        lt_to_layer_0: lt_to_layer_0 {
-            compatible = "zmk,behavior-hold-tap";
-            label = "LAYER_TAP_TO_0";
-            bindings = <&mo>, <&m_to_layer0>;
-
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-        };
-
         b_UpArrow_PgUp: b_UpArrow_PgUp {
             compatible = "zmk,behavior-hold-tap";
             label = "B_UPARROW_PGUP";
@@ -88,16 +79,6 @@
             compatible = "zmk,behavior-hold-tap";
             label = "B_HAIFUN_UNDERBAR";
             bindings = <&m_underbar>, <&m_haifun>;
-
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            flavor = "tap-preferred";
-        };
-
-        b_Rclick_Ctrl_A: b_Rclick_Ctrl_A {
-            compatible = "zmk,behavior-hold-tap";
-            label = "B_RCLICK_CTRL_A";
-            bindings = <&m_Ctrl_A>, <&m_mkp_right>;
 
             #binding-cells = <2>;
             tapping-term-ms = <200>;
@@ -183,6 +164,26 @@
             tapping-term-ms = <100>;
             flavor = "tap-preferred";
         };
+
+        b_CtrlC_CtrlX: b_CtrlC_CtrlX {
+            compatible = "zmk,behavior-hold-tap";
+            label = "B_CTRLC_CTRLX";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <100>;
+            flavor = "tap-preferred";
+        };
+
+        b_CtrlV_CtrlShiftV: b_CtrlV_CtrlShiftV {
+            compatible = "zmk,behavior-hold-tap";
+            label = "B_CTRLV_CTRLSHIFTV";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <100>;
+            flavor = "tap-preferred";
+        };
     };
 
     combos {
@@ -214,17 +215,17 @@
 
         MOUSE {
             bindings = <
-&b_Win1_Esc ESCAPE LG(NUMBER_1)  &b_Win2_Win6 LG(NUMBER_6) LG(NUMBER_2)  &b_Win3_Win7 LG(N7) LG(NUMBER_3)  &b_Win4_Win8 LG(N8) LG(NUMBER_4)  &b_Win5_Win9 LG(N9) LG(N5)                                                    &trans                      &trans    &lt 1 A                                &b_CtrlV_CtrlShiftV LC(LS(V)) LC(V)  &trans
-&trans                           &trans                                  &trans                            &trans                            &trans                      &trans      &b_scnshot LS(LG(S)) LA(PRINTSCREEN)  &b_CtrlC_CtrlX LC(X) LC(C)  &mkp MB1  &mkp MB3                               &mkp MB2                             &kp ENTER
-&trans                           &trans                                  &trans                            &trans                            &trans                      &trans      &trans                                &trans                      &trans    &b_CtrlShiftTab LC(LS(T)) LS(LC(TAB))  &b_CtrlTab LA(RIGHT) LC(TAB)         &trans
-&trans                           &trans                                  &trans                            &trans                            &trans                      &to 2       &trans                                &kp BACKSPACE                                                                                                     &trans
+&b_Win1_Esc ESCAPE LG(NUMBER_1)  &b_Win2_Win6 LG(NUMBER_6) LG(NUMBER_2)  &b_Win3_Win7 LG(N7) LG(NUMBER_3)  &b_Win4_Win8 LG(N8) LG(NUMBER_4)  &b_Win5_Win9 LG(N9) LG(N5)                      &trans                      &trans    &lt 1 A                                &b_CtrlV_CtrlShiftV LC(LS(V)) LC(V)  &trans
+&trans                           &trans                                  &trans                            &trans                            &trans                      &trans      &trans  &b_CtrlC_CtrlX LC(X) LC(C)  &mkp MB1  &mkp MB3                               &mkp MB2                             &kp ENTER
+&trans                           &trans                                  &trans                            &trans                            &trans                      &trans      &trans  &trans                      &trans    &b_CtrlShiftTab LC(LS(T)) LS(LC(TAB))  &b_CtrlTab LA(RIGHT) LC(TAB)         &trans
+&trans                           &trans                                  &trans                            &trans                            &trans                      &to 2       &trans  &kp BACKSPACE                                                                                                     &trans
             >;
         };
 
         l1_typing {
             bindings = <
 &kp Q      &kp W         &kp E         &kp R            &kp T                                              &kp Y          &kp U  &lt L_SCROLL I  &kp O    &kp P
-&kp A      &kp S         &kp D         &kp F            &kp G            &kp LS(LG(S))      &b_scshot 0 0  &kp H          &kp J  &kp K           &kp L    &kp ENTER
+&kp A      &kp S         &kp D         &kp F            &kp G            &kp LS(LG(S))      &trans         &kp H          &kp J  &kp K           &kp L    &kp ENTER
 &kp Z      &kp X         &kp C         &kp V            &kp B            &kp C_PP           &trans         &kp N          &kp M  &kp COMMA       &kp DOT  &trans
 &kp LCTRL  &kp LEFT_WIN  &kp LEFT_ALT  &lt L_NUM GRAVE  &lt L_SYM SPACE  &to L_MOUSE        &m_gemini_mic  &kp BACKSPACE                                  &trans
             >;
@@ -243,10 +244,10 @@
 
         l3_shift {
             bindings = <
-&trans  &trans  &trans                    &trans           &trans                      &trans        &trans           &b_UpArrow_PgUp 0 0     &kp SLASH        &kp LG(V)
-&trans  &trans  &b_paste_clean_paste 0 0  &b_copy_cut 0 0  &trans  &trans      &trans  &kp HOME      &kp LEFT_ARROW   &b_haifun_underbar 0 0  &kp RIGHT_ARROW  &kp END
-&trans  &trans  &trans                    &trans           &trans  &trans      &trans  &kp QUESTION  &kp EXCLAMATION  &m_down_arrow           &trans           &trans
-&trans  &trans  &trans                    &trans           &trans  &trans      &trans  &kp DELETE                                                              &trans
+&trans  &trans  &trans  &trans  &trans                      &trans        &trans           &b_UpArrow_PgUp 0 0     &kp SLASH        &kp LG(V)
+&trans  &trans  &trans  &trans  &trans  &trans      &trans  &kp HOME      &kp LEFT_ARROW   &b_haifun_underbar 0 0  &kp RIGHT_ARROW  &kp END
+&trans  &trans  &trans  &trans  &trans  &trans      &trans  &kp QUESTION  &kp EXCLAMATION  &trans                  &trans           &trans
+&trans  &trans  &trans  &trans  &trans  &trans      &trans  &kp DELETE                                                              &trans
             >;
         };
 
@@ -270,10 +271,10 @@
 
         l6_AUTO_MOUSE {
             bindings = <
-&kp ESCAPE  &kp LG(NUMBER_1)  &kp LG(NUMBER_2)  &trans  &trans                            &trans         &trans                               &lt L_SCROLL LA(LEFT_ARROW)  &trans    &trans
-&trans      &trans            &trans            &trans  &trans  &trans            &trans  &trans         &mkp MB1                             &mkp MB3                     &mkp MB2  &kp ENTER
-&trans      &trans            &trans            &trans  &trans  &trans            &trans  &trans         &b_CtrlW_CtrlShiftT LS(LC(T)) LC(W)  &trans                       &trans    &b_AltTab F14 F13
-&trans      &trans            &trans            &trans  &trans  &to L_TYPING      &trans  &kp BACKSPACE                                                                              &trans
+&kp ESCAPE  &kp LG(NUMBER_1)  &kp LG(NUMBER_2)  &trans  &trans                            &trans         &trans    &lt L_SCROLL LA(LEFT_ARROW)  &trans    &trans
+&trans      &trans            &trans            &trans  &trans  &trans            &trans  &trans         &mkp MB1  &mkp MB3                     &mkp MB2  &kp ENTER
+&trans      &trans            &trans            &trans  &trans  &trans            &trans  &trans         &trans    &trans                       &trans    &b_AltTab F14 F13
+&trans      &trans            &trans            &trans  &trans  &to L_TYPING      &trans  &kp BACKSPACE                                                   &trans
             >;
 
             sensor-bindings = <&inc_dec_kp 0 0>;
