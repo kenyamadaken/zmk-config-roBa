@@ -23,7 +23,6 @@
 };
 
 / {
-    // --- 1. マクロ定義 ---
     macros {
         m_to_layer0: m_to_layer0 {
             compatible = "zmk,behavior-macro";
@@ -44,7 +43,7 @@
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = 
-                <&kp LG(NUMBER_1)>, 
+                <&kp LG(N1)>, 
                 <&macro_wait_time 200>, 
                 <&kp LA(D)>, 
                 <&macro_wait_time 100>, 
@@ -115,9 +114,7 @@
         };
     };
 
-    // --- 2. ベヘイビア定義 ---
     behaviors {
-        // ★ZMKの絶対ルールに従い、すべて #binding-cells = <2> に修正しました
         b_ht: b_ht {
             compatible = "zmk,behavior-hold-tap";
             bindings = <&kp>, <&kp>;
@@ -203,10 +200,10 @@
 
         l0_MOUSE {
             bindings = <
-&kp ESCAPE  &kp LG(NUMBER_1)  &b_ht LG(NUMBER_6) LG(NUMBER_2)  &trans  &trans                      &trans         &trans                                &lt L_SCROLL LA(LEFT_ARROW)  &trans    &trans
-&trans      &trans            &trans                           &trans  &trans  &trans      &trans  &trans         &mkp MB1                              &mkp MB3                     &mkp MB2  &kp ENTER
-&trans      &trans            &trans                           &trans  &trans  &trans      &trans  &trans         &b_CtrlW_CtrlShiftT LS(LC(T)) LC(W)   &trans                       &trans    &b_AltTab F14 F13
-&trans      &trans            &trans                           &trans  &trans  &to L_TYPING       &trans  &kp BACKSPACE                                                                             &trans
+&b_ht ESC LG(N1)  &b_ht LG(N6) LG(N2)  &b_ht LG(N7) LG(N3)  &b_ht LG(N8) LG(N4)  &b_ht LG(N9) LG(N5)      &trans  &trans  &mo L_SCROLL       &b_ht LS(LC(V)) LC(V)        &trans
+&trans            &trans               &trans               &trans               &trans               &trans      &trans  &b_ht LC(V) LC(C)  &mkp MB1           &mkp MB3                     &mkp MB2                 &kp ENTER
+&trans            &trans               &trans               &trans               &trans               &trans      &trans  &trans             &trans             &b_ht LC(LS(T)) LC(LS(TAB))  &b_ht LA(RIGHT) LC(TAB)  &trans
+&trans            &trans               &trans               &trans               &trans               &to L_TYPING      &trans  &trans             &kp BACKSPACE
             >;
             sensor-bindings = <&inc_dec_kp 0 0>;
         };
@@ -259,10 +256,10 @@
 
         l6_AUTO_MOUSE {
             bindings = <
-&kp ESCAPE  &kp LG(NUMBER_1)  &b_ht LG(NUMBER_6) LG(NUMBER_2)  &trans  &trans                      &trans         &trans                                &lt L_SCROLL LA(LEFT_ARROW)  &trans    &trans
-&trans      &trans            &trans                           &trans  &trans  &trans      &trans  &trans         &mkp MB1                              &mkp MB3                     &mkp MB2  &kp ENTER
-&trans      &trans            &trans                           &trans  &trans  &trans      &trans  &trans         &b_CtrlW_CtrlShiftT LS(LC(T)) LC(W)   &trans                       &trans    &b_AltTab F14 F13
-&trans      &trans            &trans                           &trans  &trans  &to L_TYPING       &trans  &kp BACKSPACE                                                                             &trans
+&b_ht ESC LG(N1)  &b_ht LG(N6) LG(N2)  &b_ht LG(N7) LG(N3)  &b_ht LG(N8) LG(N4)  &b_ht LG(N9) LG(N5)      &trans  &trans  &mo L_SCROLL       &b_ht LS(LC(V)) LC(V)        &trans
+&trans            &trans               &trans               &trans               &trans               &trans      &trans  &b_ht LC(V) LC(C)  &mkp MB1           &mkp MB3                     &mkp MB2                 &kp ENTER
+&trans            &trans               &trans               &trans               &trans               &trans      &trans  &trans             &trans             &b_ht LC(LS(T)) LC(LS(TAB))  &b_ht LA(RIGHT) LC(TAB)  &trans
+&trans            &trans               &trans               &trans               &trans               &to L_TYPING      &trans  &trans             &kp BACKSPACE
             >;
             sensor-bindings = <&inc_dec_kp 0 0>;
         };
