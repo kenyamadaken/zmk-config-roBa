@@ -79,7 +79,6 @@
             #binding-cells = <0>;
             bindings = <&mkp MB2>;
         };
-        // ★修正：確実にショートカットを送るためのマクロ
         m_copy: m_copy {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -103,6 +102,7 @@
     };
 
     behaviors {
+        // ★すべてのパラメーターをZMKの絶対ルールである「2」に修正・統一しました。
         b_ht: b_ht {
             compatible = "zmk,behavior-hold-tap";
             bindings = <&kp>, <&kp>;
@@ -111,20 +111,18 @@
             flavor = "tap-preferred";
             quick-tap-ms = <0>;
         };
-        // ★修正：コピー/切り取り専用 behavior
         b_copy_cut: b_copy_cut {
             compatible = "zmk,behavior-hold-tap";
             bindings = <&m_cut>, <&m_copy>;
-            #binding-cells = <0>;
+            #binding-cells = <2>;
             tapping-term-ms = <250>;
             flavor = "tap-preferred";
             quick-tap-ms = <0>;
         };
-        // ★修正：ペースト専用 behavior
         b_paste_ht: b_paste_ht {
             compatible = "zmk,behavior-hold-tap";
             bindings = <&m_clean_paste>, <&m_paste>;
-            #binding-cells = <0>;
+            #binding-cells = <2>;
             tapping-term-ms = <250>;
             flavor = "tap-preferred";
             quick-tap-ms = <0>;
@@ -186,9 +184,9 @@
 
         l0_MOUSE {
             bindings = <
-&b_ht ESC LG(N1)  &b_ht LG(N6) LG(N2)  &b_ht LG(N7) LG(N3)  &b_ht LG(N8) LG(N4)  &b_ht LG(N9) LG(N5)      &trans  &trans  &mo L_SCROLL               &b_paste_ht                  &trans
-&trans            &trans               &trans               &trans               &trans                   &trans  &trans  &b_copy_cut                &mkp MB1                     &mkp MB3                     &mkp MB2                 &kp ENTER
-&trans            &trans               &trans               &trans               &trans                   &trans  &trans  &trans                     &trans                       &b_ht LC(LS(T)) LC(LS(TAB))  &b_ht LA(RIGHT) LC(TAB)  &trans
+&b_ht ESC LG(N1)  &b_ht LG(N6) LG(N2)  &b_ht LG(N7) LG(N3)  &b_ht LG(N8) LG(N4)  &b_ht LG(N9) LG(N5)      &trans  &trans  &mo L_SCROLL       &b_paste_ht 0 0              &trans
+&trans            &trans               &trans               &trans               &trans                   &trans  &trans  &b_copy_cut 0 0    &mkp MB1                     &mkp MB3                     &mkp MB2                 &kp ENTER
+&trans            &trans               &trans               &trans               &trans                   &trans  &trans  &trans             &trans                       &b_ht LC(LS(T)) LC(LS(TAB))  &b_ht LA(RIGHT) LC(TAB)  &trans
 &trans            &trans               &trans               &trans               &trans                   &to L_TYPING  &trans  &kp BACKSPACE                                                                                             &trans
             >;
             sensor-bindings = <&inc_dec_kp 0 0>;
@@ -206,9 +204,9 @@
 
         l2_AUTO_MOUSE {
             bindings = <
-&b_ht ESC LG(N1)  &b_ht LG(N6) LG(N2)  &b_ht LG(N7) LG(N3)  &b_ht LG(N8) LG(N4)  &b_ht LG(N9) LG(N5)      &trans  &trans  &mo L_SCROLL               &b_paste_ht                  &trans
-&trans            &trans               &trans               &trans               &trans                   &trans  &trans  &b_copy_cut                &mkp MB1                     &mkp MB3                     &mkp MB2                 &kp ENTER
-&trans            &trans               &trans               &trans               &trans                   &trans  &trans  &trans                     &trans                       &b_ht LC(LS(T)) LC(LS(TAB))  &b_ht LA(RIGHT) LC(TAB)  &trans
+&b_ht ESC LG(N1)  &b_ht LG(N6) LG(N2)  &b_ht LG(N7) LG(N3)  &b_ht LG(N8) LG(N4)  &b_ht LG(N9) LG(N5)      &trans  &trans  &mo L_SCROLL       &b_paste_ht 0 0              &trans
+&trans            &trans               &trans               &trans               &trans                   &trans  &trans  &b_copy_cut 0 0    &mkp MB1                     &mkp MB3                     &mkp MB2                 &kp ENTER
+&trans            &trans               &trans               &trans               &trans                   &trans  &trans  &trans             &trans                       &b_ht LC(LS(T)) LC(LS(TAB))  &b_ht LA(RIGHT) LC(TAB)  &trans
 &trans            &trans               &trans               &trans               &trans                   &to L_TYPING  &trans  &kp BACKSPACE                                                                                             &trans
             >;
             sensor-bindings = <&inc_dec_kp 0 0>;
@@ -216,10 +214,10 @@
 
         l3_shift {
             bindings = <
-&trans  &trans  &trans  &trans  &trans                      &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans                          &trans
+&trans  &trans  &trans           &trans            &trans                      &trans        &trans           &b_UpArrow_PgUp 0 0     &kp SLASH        &kp LG(V)
+&trans  &trans  &b_paste_ht 0 0  &b_copy_cut 0 0   &trans  &trans      &trans  &kp HOME      &kp LEFT_ARROW   &b_haifun_underbar 0 0  &kp RIGHT_ARROW  &kp END
+&trans  &trans  &trans           &trans            &trans  &trans      &trans  &kp QUESTION  &kp EXCLAMATION  &m_down_arrow           &trans           &trans
+&trans  &trans  &trans           &trans            &trans  &trans      &trans  &kp DELETE                                                              &trans
             >;
         };
 
