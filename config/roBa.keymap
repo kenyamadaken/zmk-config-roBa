@@ -29,6 +29,11 @@
             #binding-cells = <0>;
             bindings = <&to L_MOUSE>;
         };
+        m_gemini_mic: m_gemini_mic {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LG(N1)>, <&macro_wait_time 200>, <&kp LA(D)>, <&macro_wait_time 100>, <&kp LS(TAB)>, <&kp LS(TAB)>, <&kp LS(TAB)>, <&kp ENTER>;
+        };
         m_alt_prtsc: m_alt_prtsc {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -38,19 +43,6 @@
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp LG(LS(S))>;
-        };
-        m_gemini_mic: m_gemini_mic {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = 
-                <&kp LG(N1)>, 
-                <&macro_wait_time 200>, 
-                <&kp LA(D)>, 
-                <&macro_wait_time 100>, 
-                <&kp LS(TAB)>, 
-                <&kp LS(TAB)>, 
-                <&kp LS(TAB)>, 
-                <&kp ENTER>;
         };
         m_up_arrow: m_up_arrow {
             compatible = "zmk,behavior-macro";
@@ -87,30 +79,26 @@
             #binding-cells = <0>;
             bindings = <&mkp MB2>;
         };
-        m_back: m_back {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp C_AC_BACK>;
-        };
+        // ★修正：確実にショートカットを送るためのマクロ
         m_copy: m_copy {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LC(C)>;
+            bindings = <&macro_press &kp LCTRL>, <&macro_tap &kp C>, <&macro_release &kp LCTRL>;
         };
         m_cut: m_cut {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LC(X)>;
-        };
-        m_clean_paste: m_clean_paste {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp LS(LC(V))>;
+            bindings = <&macro_press &kp LCTRL>, <&macro_tap &kp X>, <&macro_release &kp LCTRL>;
         };
         m_paste: m_paste {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LC(V)>;
+            bindings = <&macro_press &kp LCTRL>, <&macro_tap &kp V>, <&macro_release &kp LCTRL>;
+        };
+        m_clean_paste: m_clean_paste {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_press &kp LCTRL &kp LSHIFT>, <&macro_tap &kp V>, <&macro_release &kp LCTRL &kp LSHIFT>;
         };
     };
 
@@ -123,13 +111,23 @@
             flavor = "tap-preferred";
             quick-tap-ms = <0>;
         };
-        b_copy_paste: b_copy_paste {
+        // ★修正：コピー/切り取り専用 behavior
+        b_copy_cut: b_copy_cut {
             compatible = "zmk,behavior-hold-tap";
-            bindings = <&kp>, <&kp>;
-            #binding-cells = <2>;
+            bindings = <&m_cut>, <&m_copy>;
+            #binding-cells = <0>;
             tapping-term-ms = <250>;
             flavor = "tap-preferred";
-            quick-tap-ms = <0>; 
+            quick-tap-ms = <0>;
+        };
+        // ★修正：ペースト専用 behavior
+        b_paste_ht: b_paste_ht {
+            compatible = "zmk,behavior-hold-tap";
+            bindings = <&m_clean_paste>, <&m_paste>;
+            #binding-cells = <0>;
+            tapping-term-ms = <250>;
+            flavor = "tap-preferred";
+            quick-tap-ms = <0>;
         };
         lt_to_layer_0: lt_to_layer_0 {
             compatible = "zmk,behavior-hold-tap";
@@ -159,13 +157,6 @@
             tapping-term-ms = <200>;
             flavor = "tap-preferred";
         };
-        b_Rclick_Ctrl_A: b_Rclick_Ctrl_A {
-            compatible = "zmk,behavior-hold-tap";
-            bindings = <&m_Ctrl_A>, <&m_mkp_right>;
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            flavor = "tap-preferred";
-        };
         b_AltTab: b_AltTab {
             compatible = "zmk,behavior-hold-tap";
             bindings = <&kp>, <&kp>;
@@ -178,20 +169,6 @@
             bindings = <&kp>, <&kp>;
             #binding-cells = <2>;
             tapping-term-ms = <200>;
-            flavor = "tap-preferred";
-        };
-        b_copy_cut: b_copy_cut {
-            compatible = "zmk,behavior-hold-tap";
-            bindings = <&m_cut>, <&m_copy>;
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            flavor = "tap-preferred";
-        };
-        b_paste_clean_paste: b_paste_clean_paste {
-            compatible = "zmk,behavior-hold-tap";
-            bindings = <&m_clean_paste>, <&m_paste>;
-            #binding-cells = <2>;
-            tapping-term-ms = <150>;
             flavor = "tap-preferred";
         };
     };
@@ -209,8 +186,8 @@
 
         l0_MOUSE {
             bindings = <
-&b_ht ESC LG(N1)  &b_ht LG(N6) LG(N2)  &b_ht LG(N7) LG(N3)  &b_ht LG(N8) LG(N4)  &b_ht LG(N9) LG(N5)      &trans  &trans  &mo L_SCROLL               &b_ht LS(LC(V)) LC(V)        &trans
-&trans            &trans               &trans               &trans               &trans                   &trans  &trans  &b_copy_paste LC(V) LC(C)  &mkp MB1                     &mkp MB3                     &mkp MB2                 &kp ENTER
+&b_ht ESC LG(N1)  &b_ht LG(N6) LG(N2)  &b_ht LG(N7) LG(N3)  &b_ht LG(N8) LG(N4)  &b_ht LG(N9) LG(N5)      &trans  &trans  &mo L_SCROLL               &b_paste_ht                  &trans
+&trans            &trans               &trans               &trans               &trans                   &trans  &trans  &b_copy_cut                &mkp MB1                     &mkp MB3                     &mkp MB2                 &kp ENTER
 &trans            &trans               &trans               &trans               &trans                   &trans  &trans  &trans                     &trans                       &b_ht LC(LS(T)) LC(LS(TAB))  &b_ht LA(RIGHT) LC(TAB)  &trans
 &trans            &trans               &trans               &trans               &trans                   &to L_TYPING  &trans  &kp BACKSPACE                                                                                             &trans
             >;
@@ -229,8 +206,8 @@
 
         l2_AUTO_MOUSE {
             bindings = <
-&b_ht ESC LG(N1)  &b_ht LG(N6) LG(N2)  &b_ht LG(N7) LG(N3)  &b_ht LG(N8) LG(N4)  &b_ht LG(N9) LG(N5)      &trans  &trans  &mo L_SCROLL               &b_ht LS(LC(V)) LC(V)        &trans
-&trans            &trans               &trans               &trans               &trans                   &trans  &trans  &b_copy_paste LC(V) LC(C)  &mkp MB1                     &mkp MB3                     &mkp MB2                 &kp ENTER
+&b_ht ESC LG(N1)  &b_ht LG(N6) LG(N2)  &b_ht LG(N7) LG(N3)  &b_ht LG(N8) LG(N4)  &b_ht LG(N9) LG(N5)      &trans  &trans  &mo L_SCROLL               &b_paste_ht                  &trans
+&trans            &trans               &trans               &trans               &trans                   &trans  &trans  &b_copy_cut                &mkp MB1                     &mkp MB3                     &mkp MB2                 &kp ENTER
 &trans            &trans               &trans               &trans               &trans                   &trans  &trans  &trans                     &trans                       &b_ht LC(LS(T)) LC(LS(TAB))  &b_ht LA(RIGHT) LC(TAB)  &trans
 &trans            &trans               &trans               &trans               &trans                   &to L_TYPING  &trans  &kp BACKSPACE                                                                                             &trans
             >;
@@ -239,10 +216,10 @@
 
         l3_shift {
             bindings = <
-&trans  &trans  &trans                    &trans            &trans                      &trans        &trans           &b_UpArrow_PgUp 0 0     &kp SLASH        &kp LG(V)
-&trans  &trans  &b_paste_clean_paste 0 0  &b_copy_cut 0 0   &trans  &trans      &trans  &kp HOME      &kp LEFT_ARROW   &b_haifun_underbar 0 0  &kp RIGHT_ARROW  &kp END
-&trans  &trans  &trans                    &trans            &trans  &trans      &trans  &kp QUESTION  &kp EXCLAMATION  &m_down_arrow           &trans           &trans
-&trans  &trans  &trans                    &trans            &trans  &trans      &trans  &kp DELETE                                                              &trans
+&trans  &trans  &trans  &trans  &trans                      &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans                          &trans
             >;
         };
 
