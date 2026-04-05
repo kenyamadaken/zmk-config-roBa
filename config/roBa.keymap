@@ -20,7 +20,7 @@
 
 &trackball {
     automouse-layer = <L_AUTO>;
-    scroll-layers = <L_SCROLL>;
+    scroll-layers = <L_SCROLL L_TASK>;
 };
 
 / {
