@@ -231,10 +231,10 @@
 
         l3_shift {
             bindings = <
-&trans  &trans  &trans           &trans            &trans                      &trans        &trans           &b_UpArrow_PgUp 0 0     &kp SLASH        &kp LG(V)
-&trans  &trans  &b_paste_ht 0 0  &b_copy_cut 0 0   &trans  &trans      &trans  &kp HOME      &kp LEFT_ARROW   &b_haifun_underbar 0 0  &kp RIGHT_ARROW  &kp END
-&trans  &trans  &trans           &trans            &trans  &trans      &trans  &kp QUESTION  &kp EXCLAMATION  &m_down_arrow           &trans           &trans
-&trans  &trans  &trans           &trans            &trans  &trans      &trans  &kp DELETE                                                              &trans
+&trans  &trans  &trans           &trans            &trans                      &trans        &trans           &b_ht LC(HOME) UP_ARROW   &kp SLASH  &kp LG(V)
+&trans  &trans  &b_paste_ht 0 0  &b_copy_cut 0 0   &trans  &trans      &trans  &kp HOME      &kp LEFT_ARROW   &kp RIGHT_ARROW           &kp END    &kp LS(ENTER)
+&trans  &trans  &trans           &trans            &trans  &trans      &trans  &kp QUESTION  &kp EXCLAMATION  &b_ht LC(END) DOWN_ARROW  &kp MINUS  &trans
+&trans  &trans  &trans           &trans            &trans  &trans      &trans  &kp DELETE                                                          &trans
             >;
         };
 
