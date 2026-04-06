@@ -204,7 +204,7 @@
 &b_ht ESC LG(N1)  &b_ht LG(N6) LG(N2)  &b_ht LG(N7) LG(N3)  &b_ht LG(N8) LG(N4)  &b_ht LG(N9) LG(N5)      &trans  &trans  &mo L_SCROLL       &b_paste_ht 0 0              &trans
 &trans            &trans               &trans               &trans               &trans                   &trans  &trans  &b_copy_cut 0 0    &mkp MB1                     &mkp MB3                     &mkp MB2                 &kp ENTER
 &trans            &trans               &trans               &trans               &trans                   &trans  &trans  &trans             &trans                       &b_min_tab 0 LC(LS(TAB))     &b_ht LA(RIGHT) LC(TAB)  &b_ht F14 F13
-&trans            &trans               &trans               &trans               &trans                   &to L_TYPING  &trans  &kp BACKSPACE                                                                                             &trans
+&trans            &trans               &trans               &trans               &to L_TYPING             &trans  &trans  &kp BACKSPACE                                                                                             &trans
             >;
             sensor-bindings = <&inc_dec_kp 0 0>;
         };
@@ -214,7 +214,7 @@
 &kp Q      &kp W         &kp E         &kp R            &kp T                                              &kp Y          &kp U  &lt L_SCROLL I    &kp O    &kp P
 &kp A      &kp S         &kp D         &kp F            &kp G        &kp LS(LG(S))      &b_scshot 0 0      &kp H          &kp J  &kp K             &kp L    &kp ENTER
 &kp Z      &kp X         &kp C         &kp V            &kp B        &kp C_PP           &trans             &kp N          &kp M  &kp COMMA         &kp DOT  &trans
-&kp LCTRL  &kp LEFT_WIN  &kp LEFT_ALT  &lt L_NUM GRAVE  &lt L_SYM SPACE  &to L_MOUSE              &m_gemini_mic  &kp BACKSPACE                                     &trans
+&kp LCTRL  &kp LEFT_WIN  &kp LEFT_ALT  &lt L_NUM TAB  &to L_MOUSE  &lt L_SYM SPACE                       &m_gemini_mic  &kp BACKSPACE                                     &trans
             >;
             sensor-bindings = <&inc_dec_kp PG_UP PAGE_DOWN>;
         };
@@ -224,7 +224,7 @@
 &b_ht ESC LG(N1)  &b_ht LG(N6) LG(N2)  &b_ht LG(N7) LG(N3)  &b_ht LG(N8) LG(N4)  &b_ht LG(N9) LG(N5)      &trans  &trans  &mo L_SCROLL       &b_paste_ht 0 0              &trans
 &trans            &trans               &trans               &trans               &trans                   &trans  &trans  &b_copy_cut 0 0    &mkp MB1                     &mkp MB3                     &mkp MB2                 &kp ENTER
 &trans            &trans               &trans               &trans               &trans                   &trans  &trans  &trans             &trans                       &b_min_tab 0 LC(LS(TAB))     &b_ht LA(RIGHT) LC(TAB)  &b_ht F14 F13
-&trans            &trans               &trans               &trans               &trans                   &to L_TYPING  &trans  &kp BACKSPACE                                                                                             &trans
+&trans            &trans               &trans               &trans               &to L_TYPING             &trans  &trans  &kp BACKSPACE                                                                                             &trans
             >;
             sensor-bindings = <&inc_dec_kp 0 0>;
         };
