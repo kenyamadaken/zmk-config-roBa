@@ -109,19 +109,38 @@
             #binding-cells = <0>;
             bindings = <&macro_press &kp LCTRL &kp LSHIFT>, <&macro_tap &kp V>, <&macro_release &kp LCTRL &kp LSHIFT>;
         };
+
+        // --- カッコ入力用マクロ ---
+        m_kagi: m_kagi {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp RBKT>, <&kp NON_US_HASH>, <&kp ENTER>, <&kp LEFT>;
+        };
+        m_kuro: m_kuro {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp RBKT>, <&kp NON_US_HASH>, <&kp SPACE>, <&kp ENTER>, <&kp LEFT>;
+        };
+        m_kakko_z: m_kakko_z {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LS(N8)>, <&kp LS(N9)>, <&kp F9>, <&kp ENTER>, <&kp LEFT>;
+        };
+        m_kakko_h: m_kakko_h {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LS(N8)>, <&kp LS(N9)>, <&kp F10>, <&kp ENTER>, <&kp LEFT>;
+        };
     };
 
     behaviors {
-
         lt_fast: lt_fast {
             compatible = "zmk,behavior-hold-tap";
             bindings = <&mo>, <&kp>;
             #binding-cells = <2>;
-            tapping-term-ms = <130>;  // ★ここで認識時間を調整します（短くするほど速く反応します）
+            tapping-term-ms = <130>;
             flavor = "tap-preferred";
         };
-
-
         b_min_tab: b_min_tab {
             compatible = "zmk,behavior-hold-tap";
             bindings = <&m_minimize>, <&kp>;
@@ -196,6 +215,20 @@
             tapping-term-ms = <200>;
             flavor = "tap-preferred";
         };
+        b_kagi: b_kagi {
+            compatible = "zmk,behavior-hold-tap";
+            bindings = <&m_kuro>, <&m_kagi>;
+            #binding-cells = <2>;
+            tapping-term-ms = <250>;
+            flavor = "tap-preferred";
+        };
+        b_kakko: b_kakko {
+            compatible = "zmk,behavior-hold-tap";
+            bindings = <&m_kakko_h>, <&m_kakko_z>;
+            #binding-cells = <2>;
+            tapping-term-ms = <250>;
+            flavor = "tap-preferred";
+        };
     };
 
     combos {
@@ -224,7 +257,7 @@
 &kp Q      &kp W         &kp E         &kp R            &kp T                                              &kp Y          &kp U  &lt L_SCROLL I    &kp O    &kp P
 &kp A      &kp S         &kp D         &kp F            &kp G        &kp LS(LG(S))      &b_scshot 0 0      &kp H          &kp J  &kp K             &kp L    &kp ENTER
 &kp Z      &kp X         &kp C         &kp V            &kp B        &kp C_PP           &trans             &kp N          &kp M  &kp COMMA         &kp DOT  &trans
-&kp LCTRL  &kp LEFT_WIN  &kp LEFT_ALT  &lt L_NUM TAB  &to L_MOUSE  &lt_fast L_SYM SPACE                    &m_gemini_mic  &kp BACKSPACE                                     &trans
+&kp LCTRL  &kp LEFT_WIN  &kp LEFT_ALT  &lt L_NUM TAB    &to L_MOUSE  &lt_fast L_SYM SPACE                  &m_gemini_mic  &kp BACKSPACE                                     &trans
             >;
             sensor-bindings = <&inc_dec_kp PG_UP PAGE_DOWN>;
         };
@@ -239,12 +272,12 @@
             sensor-bindings = <&inc_dec_kp 0 0>;
         };
 
-      l3_shift {
+        l3_shift {
             bindings = <
-&trans  &trans  &trans          &trans          &trans                      &trans        &trans           &b_ht LC(HOME) UP_ARROW   &kp MINUS  &kp LG(V)
-&trans  &trans  &kp LC(LSHIFT)  &kp LSHIFT      &trans  &trans      &trans  &kp HOME      &kp LEFT_ARROW   &kp RIGHT_ARROW           &kp END    &kp LS(ENTER)
-&trans  &trans  &trans          &trans          &trans  &trans      &trans  &kp QUESTION  &kp EXCLAMATION  &b_ht LC(END) DOWN_ARROW  &kp SLASH  &trans
-&trans  &trans  &trans          &trans          &trans  &trans      &trans  &kp DELETE                                                          &trans
+&trans  &trans  &trans          &trans          &trans                      &b_ht KP_MINUS KP_PLUS   &b_kakko 0 0              &b_kagi 0 0       &b_paste_ht 0 0  &b_ht AMPS SQT
+&trans  &trans  &kp LC(LSHIFT)  &kp LSHIFT      &trans  &trans      &trans  &b_copy_cut 0 0          &b_ht FSLH MINUS          &b_ht PRCNT EXCL  &b_ht AT QMARK   &kp LS(ENTER)
+&trans  &trans  &trans          &trans          &trans  &trans      &trans  &b_ht LC(HOME) UP_ARROW  &b_ht LC(END) DOWN_ARROW  &kp HOME          &kp LEFT_ARROW   &kp RIGHT_ARROW  &kp END
+&trans  &trans  &trans          &trans          &trans  &trans      &b_ht SEMI COLON  &kp DELETE                                                                                   &trans
             >;
         };
 
