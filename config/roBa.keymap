@@ -272,7 +272,7 @@
             sensor-bindings = <&inc_dec_kp 0 0>;
         };
 
-      l3_shift {
+        l3_shift {
             bindings = <
 &trans  &trans  &trans          &trans      &trans                                           &b_ht KP_MINUS KP_PLUS    &b_kakko 0 0      &b_kagi 0 0       &b_paste_ht 0 0   &b_ht LS(N6) LS(N7)
 &trans  &trans  &kp LC(LSHIFT)  &kp LSHIFT  &trans  &trans  &trans        &b_copy_cut 0 0    &b_ht FSLH MINUS          &b_ht PRCNT EXCL  &b_ht LBKT QMARK  &kp LS(ENTER)
