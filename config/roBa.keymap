@@ -110,25 +110,33 @@
             bindings = <&macro_press &kp LCTRL &kp LSHIFT>, <&macro_tap &kp V>, <&macro_release &kp LCTRL &kp LSHIFT>;
         };
 
-        // --- カッコ入力用マクロ ---
+        // --- カッコ入力用マクロ (変換追いつき対策済み) ---
         m_kagi: m_kagi {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
+            wait-ms = <30>;
+            tap-ms = <30>;
             bindings = <&kp RBKT>, <&kp NON_US_HASH>, <&kp ENTER>, <&kp LEFT>;
         };
         m_kuro: m_kuro {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
+            wait-ms = <30>;
+            tap-ms = <30>;
             bindings = <&kp RBKT>, <&kp NON_US_HASH>, <&kp SPACE>, <&kp ENTER>, <&kp LEFT>;
         };
         m_kakko_z: m_kakko_z {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
+            wait-ms = <30>;
+            tap-ms = <30>;
             bindings = <&kp LS(N8)>, <&kp LS(N9)>, <&kp F9>, <&kp ENTER>, <&kp LEFT>;
         };
         m_kakko_h: m_kakko_h {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
+            wait-ms = <30>;
+            tap-ms = <30>;
             bindings = <&kp LS(N8)>, <&kp LS(N9)>, <&kp F10>, <&kp ENTER>, <&kp LEFT>;
         };
     };
@@ -257,7 +265,7 @@
 &kp Q      &kp W         &kp E         &kp R            &kp T                                              &kp Y          &kp U  &lt L_SCROLL I    &kp O    &kp P
 &kp A      &kp S         &kp D         &kp F            &kp G        &kp LS(LG(S))      &b_scshot 0 0      &kp H          &kp J  &kp K             &kp L    &kp ENTER
 &kp Z      &kp X         &kp C         &kp V            &kp B        &kp C_PP           &trans             &kp N          &kp M  &kp COMMA         &kp DOT  &trans
-&kp LCTRL  &kp LEFT_WIN  &kp LEFT_ALT  &lt L_NUM TAB    &to L_MOUSE  &lt_fast L_SYM SPACE                  &m_gemini_mic  &kp BACKSPACE                                     &trans
+&kp LCTRL  &kp LSHIFT    &kp LEFT_WIN  &lt L_NUM TAB    &to L_MOUSE  &lt_fast L_SYM SPACE                  &m_gemini_mic  &kp BACKSPACE                                     &trans
             >;
             sensor-bindings = <&inc_dec_kp PG_UP PAGE_DOWN>;
         };
@@ -275,9 +283,9 @@
         l3_shift {
             bindings = <
 &trans  &trans  &trans          &trans      &trans                                           &b_ht KP_MINUS KP_PLUS    &b_kakko 0 0      &b_kagi 0 0       &b_paste_ht 0 0   &b_ht LS(N6) LS(N7)
-&trans  &trans  &kp LC(LSHIFT)  &kp LSHIFT  &trans  &trans  &trans        &b_copy_cut 0 0    &b_ht FSLH MINUS          &b_ht PRCNT EXCL  &b_ht LBKT QMARK  &kp LS(ENTER)
+&kp F8  &kp F7  &kp LC(LSHIFT)  &kp LSHIFT  &trans  &trans  &trans        &b_copy_cut 0 0    &b_ht FSLH MINUS          &b_ht PRCNT EXCL  &b_ht LBKT QMARK  &kp LS(ENTER)
 &trans  &trans  &trans          &trans      &trans  &trans  &b_ht LC(HOME) UP_ARROW  &b_ht LC(END) DOWN_ARROW  &kp HOME          &kp LEFT_ARROW    &kp RIGHT_ARROW   &kp END
-&trans  &trans  &trans          &trans      &trans  &trans  &b_ht SEMI SQT           &kp BACKSPACE             &trans
+&trans  &trans  &trans          &trans      &trans  &trans  &b_ht SEMI SQT           &kp DELETE                &trans
             >;
         };
 
