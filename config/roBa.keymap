@@ -11,6 +11,7 @@
 #define L_NUM    4
 #define L_BT     5
 #define L_SCROLL 6
+#define L_ENG    7
 
 &mt {
     flavor = "balanced";
@@ -110,7 +111,7 @@
             bindings = <&macro_press &kp LCTRL &kp LSHIFT>, <&macro_tap &kp V>, <&macro_release &kp LCTRL &kp LSHIFT>;
         };
 
-        // --- カッコ入力用マクロ (変換追いつき対策済み) ---
+        // --- カッコ入力用マクロ ---
         m_kagi: m_kagi {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -139,9 +140,44 @@
             tap-ms = <30>;
             bindings = <&kp LS(N8)>, <&kp LS(N9)>, <&kp F10>, <&kp ENTER>, <&kp LEFT>;
         };
+
+        // --- 新規追加：半角全角を叩いてレイヤー移動するマクロ ---
+        m_to_eng: m_to_eng {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp GRAVE>, <&to L_ENG>;
+        };
+        m_to_jp: m_to_jp {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp GRAVE>, <&to L_TYPING>;
+        };
     };
 
     behaviors {
+        // --- 新規追加：マクロを組み込んだレイヤー移動Hold-Tap ---
+        b_to_eng: b_to_eng {
+            compatible = "zmk,behavior-hold-tap";
+            bindings = <&mo>, <&m_to_eng>;
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            flavor = "tap-preferred";
+        };
+        b_to_jp: b_to_jp {
+            compatible = "zmk,behavior-hold-tap";
+            bindings = <&mo>, <&m_to_jp>;
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            flavor = "tap-preferred";
+        };
+
+        lt_to: lt_to {
+            compatible = "zmk,behavior-hold-tap";
+            bindings = <&mo>, <&to>;
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            flavor = "tap-preferred";
+        };
         lt_fast: lt_fast {
             compatible = "zmk,behavior-hold-tap";
             bindings = <&mo>, <&kp>;
@@ -223,20 +259,6 @@
             tapping-term-ms = <200>;
             flavor = "tap-preferred";
         };
-        b_kagi: b_kagi {
-            compatible = "zmk,behavior-hold-tap";
-            bindings = <&m_kuro>, <&m_kagi>;
-            #binding-cells = <2>;
-            tapping-term-ms = <250>;
-            flavor = "tap-preferred";
-        };
-        b_kakko: b_kakko {
-            compatible = "zmk,behavior-hold-tap";
-            bindings = <&m_kakko_h>, <&m_kakko_z>;
-            #binding-cells = <2>;
-            tapping-term-ms = <250>;
-            flavor = "tap-preferred";
-        };
     };
 
     combos {
@@ -265,7 +287,7 @@
 &kp Q      &kp W         &kp E         &kp R            &kp T                                              &kp Y          &kp U  &lt L_SCROLL I    &kp O    &kp P
 &kp A      &kp S         &kp D         &kp F            &kp G        &kp LS(LG(S))      &b_scshot 0 0      &kp H          &kp J  &kp K             &kp L    &kp ENTER
 &kp Z      &kp X         &kp C         &kp V            &kp B        &kp C_PP           &trans             &kp N          &kp M  &kp COMMA         &kp DOT  &trans
-&kp LCTRL  &kp LSHIFT    &kp LEFT_WIN  &lt L_NUM TAB    &to L_MOUSE  &lt_fast L_SYM SPACE                  &m_gemini_mic  &kp BACKSPACE                                     &trans
+&kp LCTRL  &kp LSHIFT    &kp LEFT_WIN  &b_to_eng L_MOUSE 0  &lt L_NUM TAB  &lt_fast L_SYM SPACE            &m_gemini_mic  &kp BACKSPACE                                     &trans
             >;
             sensor-bindings = <&inc_dec_kp PG_UP PAGE_DOWN>;
         };
@@ -314,6 +336,16 @@
 &trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans                          &trans
             >;
+        };
+
+        l7_eng {
+            bindings = <
+&kp Q      &kp W         &kp E         &kp R            &kp T                                              &kp Y          &kp U  &lt L_SCROLL I    &kp O    &kp P
+&kp A      &kp S         &kp D         &kp F            &kp G        &kp LS(LG(S))      &b_scshot 0 0      &kp H          &kp J  &kp K             &kp L    &kp ENTER
+&kp Z      &kp X         &kp C         &kp V            &kp B        &kp C_PP           &trans             &kp N          &kp M  &kp COMMA         &kp DOT  &trans
+&kp LCTRL  &kp LSHIFT    &kp LEFT_WIN  &b_to_jp L_MOUSE 0   &kp LSHIFT   &lt_fast L_SYM SPACE          &trans         &kp BACKSPACE                                     &trans
+            >;
+            sensor-bindings = <&inc_dec_kp PG_UP PAGE_DOWN>;
         };
     };
 };
