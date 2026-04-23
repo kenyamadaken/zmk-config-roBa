@@ -259,6 +259,22 @@
             tapping-term-ms = <200>;
             flavor = "tap-preferred";
         };
+
+        // --- 復活：カッコ用のHold-Tap設定 ---
+        b_kagi: b_kagi {
+            compatible = "zmk,behavior-hold-tap";
+            bindings = <&m_kuro>, <&m_kagi>;
+            #binding-cells = <2>;
+            tapping-term-ms = <250>;
+            flavor = "tap-preferred";
+        };
+        b_kakko: b_kakko {
+            compatible = "zmk,behavior-hold-tap";
+            bindings = <&m_kakko_h>, <&m_kakko_z>;
+            #binding-cells = <2>;
+            tapping-term-ms = <250>;
+            flavor = "tap-preferred";
+        };
     };
 
     combos {
