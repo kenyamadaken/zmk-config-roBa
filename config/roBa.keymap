@@ -153,6 +153,20 @@
     };
 
     behaviors {
+        b_num_eng: b_num_eng {
+            compatible = "zmk,behavior-hold-tap";
+            bindings = <&mo>, <&m_to_eng>;
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            flavor = "tap-preferred";
+        };
+        b_num_jp: b_num_jp {
+            compatible = "zmk,behavior-hold-tap";
+            bindings = <&mo>, <&m_to_jp>;
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            flavor = "tap-preferred";
+        };
         b_to_eng: b_to_eng {
             compatible = "zmk,behavior-hold-tap";
             bindings = <&mo>, <&m_to_eng>;
@@ -287,8 +301,8 @@
             bindings = <
 &kp Q      &kp W         &kp E         &kp R            &kp T                                              &kp Y          &kp U  &lt L_SCROLL I    &kp O    &kp P
 &kp A      &kp S         &kp D         &kp F            &kp G        &tog L_MOUSE       &b_scshot 0 0      &kp H          &kp J  &kp K             &kp L    &kp ENTER
-&kp Z      &kp X         &kp C         &kp V            &kp B        &kp C_PP           &trans             &kp N          &kp M  &kp COMMA         &kp DOT  &trans
-&kp LCTRL  &kp LSHIFT    &kp LEFT_WIN  &b_to_eng L_MOUSE 0  &lt L_NUM TAB  &lt_fast L_SYM SPACE            &m_gemini_mic  &kp BACKSPACE                                     &trans
+&kp Z      &kp X         &kp C         &kp V            &kp B        &trans             &trans             &kp N          &kp M  &kp COMMA         &kp DOT  &trans
+&kp LCTRL  &kp LSHIFT    &kp LEFT_WIN  &b_num_eng L_NUM 0  &lt L_MOUSE TAB  &lt_fast L_SYM SPACE           &m_gemini_mic  &kp BACKSPACE                                     &trans
             >;
             sensor-bindings = <&inc_dec_kp PG_UP PAGE_DOWN>;
         };
@@ -297,8 +311,8 @@
             bindings = <
 &kp Q      &kp W         &kp E         &kp R            &kp T                                              &kp Y          &kp U  &lt L_SCROLL I    &kp O    &kp P
 &kp A      &kp S         &kp D         &kp F            &kp G        &tog L_MOUSE       &b_scshot 0 0      &kp H          &kp J  &kp K             &kp L    &kp ENTER
-&kp Z      &kp X         &kp C         &kp V            &kp B        &kp C_PP           &trans             &kp N          &kp M  &kp COMMA         &kp DOT  &trans
-&kp LCTRL  &kp LSHIFT    &kp LEFT_WIN  &b_to_jp L_MOUSE 0   &kp LSHIFT   &lt_fast L_SYM SPACE          &trans         &kp BACKSPACE                                     &trans
+&kp Z      &kp X         &kp C         &kp V            &kp B        &trans             &trans             &kp N          &kp M  &kp COMMA         &kp DOT  &trans
+&kp LCTRL  &kp LSHIFT    &kp LEFT_WIN  &b_num_jp L_NUM 0   &mt LSHIFT SQT   &lt_fast L_SYM SPACE           &trans         &kp BACKSPACE                                     &trans
             >;
             sensor-bindings = <&inc_dec_kp PG_UP PAGE_DOWN>;
         };
