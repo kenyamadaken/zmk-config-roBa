@@ -28,13 +28,11 @@
         m_minimize: m_minimize {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            wait-ms = <0>;
-            tap-ms = <0>;
             bindings = 
                 <&macro_press &kp LALT>, 
                 <&macro_tap &kp SPACE>, 
                 <&macro_release &kp LALT>, 
-                <&macro_wait_time 20>, 
+                <&macro_wait_time 50>, 
                 <&macro_tap &kp N>;
         };
         m_to_layer0: m_to_layer0 {
@@ -151,17 +149,6 @@
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp GRAVE>, <&to L_TYPING>;
-        };
-        
-        m_kake: m_kake {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp KP_MULTIPLY>;
-        };
-        m_waru: m_waru {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp KP_DIVIDE>;
         };
     };
 
@@ -314,7 +301,7 @@
             bindings = <
 &kp Q      &kp W         &kp E         &kp R            &kp T                                              &kp Y          &kp U  &lt L_SCROLL I    &kp O    &kp P
 &kp A      &kp S         &kp D         &kp F            &kp G        &tog L_MOUSE       &b_scshot 0 0      &kp H          &kp J  &kp K             &kp L    &kp ENTER
-&kp Z      &kp X         &kp C         &kp V            &kp B        &trans             &trans             &kp N          &kp M  &kp COMMA         &kp DOT  &trans
+&kp Z      &kp X         &kp C         &kp V            &kp B        &trans             &trans             &kp N          &kp M  &kp COMMA         &kp DOT  &b_ht F14 F13
 &kp LCTRL  &kp LSHIFT    &kp LEFT_WIN  &b_num_eng L_NUM 0  &lt L_MOUSE TAB  &lt_fast L_SYM SPACE           &m_gemini_mic  &kp BACKSPACE                                     &trans
             >;
             sensor-bindings = <&inc_dec_kp PG_UP PAGE_DOWN>;
@@ -324,7 +311,7 @@
             bindings = <
 &kp Q      &kp W         &kp E         &kp R            &kp T                                              &kp Y          &kp U  &lt L_SCROLL I    &kp O    &kp P
 &kp A      &kp S         &kp D         &kp F            &kp G        &tog L_MOUSE       &b_scshot 0 0      &kp H          &kp J  &kp K             &kp L    &kp ENTER
-&kp Z      &kp X         &kp C         &kp V            &kp B        &trans             &trans             &kp N          &kp M  &kp COMMA         &kp DOT  &trans
+&kp Z      &kp X         &kp C         &kp V            &kp B        &trans             &trans             &kp N          &kp M  &kp COMMA         &kp DOT  &b_ht F14 F13
 &kp LCTRL  &kp LSHIFT    &kp LEFT_WIN  &b_num_jp L_NUM 0   &mt LSHIFT LS(N7)   &lt_fast L_SYM SPACE          &trans         &kp BACKSPACE                                     &trans
             >;
             sensor-bindings = <&inc_dec_kp PG_UP PAGE_DOWN>;
@@ -361,10 +348,10 @@
 
         l5_number {
             bindings = <
-&trans  &trans  &trans     &trans        &trans                               &trans     &kp N1  &kp N2  &kp N3  &kp EQUAL
-&trans  &trans  &kp MINUS  &kp PLUS      &trans        &trans         &trans  &kp MINUS  &kp N4  &kp N5  &kp N6  &kp N0
-&trans  &trans  &m_waru    &m_kake       &trans        &trans         &trans  &kp DOT    &kp N7  &kp N8  &kp N9  &trans
-&trans  &trans  &trans     &trans        &trans        &trans         &trans  &trans                                     &trans
+&trans  &trans     &trans        &trans       &trans                                 &trans     &kp N1  &kp N2  &kp N3  &kp LS(MINUS)
+&trans  &kp MINUS  &kp LS(SEMI)  &kp EQUAL    &trans         &trans  &kp MINUS       &kp N4     &kp N5  &kp N6  &kp N0
+&trans  &kp FSLH   &kp LS(SQT)   &trans       &trans         &trans  &kp DOT         &kp N7     &kp N8  &kp N9  &trans
+&trans  &trans     &trans        &trans       &trans         &trans  &trans                                     &trans
             >;
         };
 
