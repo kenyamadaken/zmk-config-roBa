@@ -4,9 +4,9 @@
 #include <dt-bindings/zmk/pointing.h>
 
 // --- レイヤー定義 ---
-#define L_MOUSE  0
-#define L_TYPING 1
-#define L_ENG    2
+#define L_TYPING 0
+#define L_ENG    1
+#define L_MOUSE  2
 #define L_AUTO   3
 #define L_SYM    4
 #define L_NUM    5
@@ -38,7 +38,7 @@
         m_to_layer0: m_to_layer0 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&to L_MOUSE>;
+            bindings = <&to L_TYPING>;
         };
         m_gemini_mic: m_gemini_mic {
             compatible = "zmk,behavior-macro";
@@ -283,34 +283,34 @@
     keymap {
         compatible = "zmk,keymap";
 
-        l0_MOUSE {
-            bindings = <
-&b_ht ESC LG(N1)  &b_ht LG(N6) LG(N2)  &b_ht LG(N7) LG(N3)  &b_ht LG(N8) LG(N4)  &b_ht LG(N9) LG(N5)      &trans  &trans  &mo L_SCROLL       &b_paste_ht 0 0              &trans
-&trans            &trans               &trans               &trans               &trans                   &trans  &trans  &b_copy_cut 0 0    &mkp MB1                     &mkp MB3                     &mkp MB2                 &kp ENTER
-&trans            &trans               &trans               &trans               &trans                   &trans  &trans  &trans             &trans                       &b_min_tab 0 LC(LS(TAB))     &b_ht LA(RIGHT) LC(TAB)  &b_ht F14 F13
-&trans            &trans               &trans               &trans               &to L_TYPING             &trans  &trans  &kp BACKSPACE                                                                                             &trans
-            >;
-            sensor-bindings = <&inc_dec_kp 0 0>;
-        };
-
-        l1_typing {
+        l0_typing {
             bindings = <
 &kp Q      &kp W         &kp E         &kp R            &kp T                                              &kp Y          &kp U  &lt L_SCROLL I    &kp O    &kp P
-&kp A      &kp S         &kp D         &kp F            &kp G        &kp LS(LG(S))      &b_scshot 0 0      &kp H          &kp J  &kp K             &kp L    &kp ENTER
+&kp A      &kp S         &kp D         &kp F            &kp G        &tog L_MOUSE       &b_scshot 0 0      &kp H          &kp J  &kp K             &kp L    &kp ENTER
 &kp Z      &kp X         &kp C         &kp V            &kp B        &kp C_PP           &trans             &kp N          &kp M  &kp COMMA         &kp DOT  &trans
 &kp LCTRL  &kp LSHIFT    &kp LEFT_WIN  &b_to_eng L_MOUSE 0  &lt L_NUM TAB  &lt_fast L_SYM SPACE            &m_gemini_mic  &kp BACKSPACE                                     &trans
             >;
             sensor-bindings = <&inc_dec_kp PG_UP PAGE_DOWN>;
         };
 
-        l2_eng {
+        l1_eng {
             bindings = <
 &kp Q      &kp W         &kp E         &kp R            &kp T                                              &kp Y          &kp U  &lt L_SCROLL I    &kp O    &kp P
-&kp A      &kp S         &kp D         &kp F            &kp G        &kp LS(LG(S))      &b_scshot 0 0      &kp H          &kp J  &kp K             &kp L    &kp ENTER
+&kp A      &kp S         &kp D         &kp F            &kp G        &tog L_MOUSE       &b_scshot 0 0      &kp H          &kp J  &kp K             &kp L    &kp ENTER
 &kp Z      &kp X         &kp C         &kp V            &kp B        &kp C_PP           &trans             &kp N          &kp M  &kp COMMA         &kp DOT  &trans
 &kp LCTRL  &kp LSHIFT    &kp LEFT_WIN  &b_to_jp L_MOUSE 0   &kp LSHIFT   &lt_fast L_SYM SPACE          &trans         &kp BACKSPACE                                     &trans
             >;
             sensor-bindings = <&inc_dec_kp PG_UP PAGE_DOWN>;
+        };
+
+        l2_mouse {
+            bindings = <
+&b_ht ESC LG(N1)  &b_ht LG(N6) LG(N2)  &b_ht LG(N7) LG(N3)  &b_ht LG(N8) LG(N4)  &b_ht LG(N9) LG(N5)      &trans  &trans  &mo L_SCROLL       &b_paste_ht 0 0              &trans
+&trans            &trans               &trans               &trans               &trans                   &tog L_MOUSE    &trans  &b_copy_cut 0 0    &mkp MB1                     &mkp MB3                     &mkp MB2                 &kp ENTER
+&trans            &trans               &trans               &trans               &trans                   &trans  &trans  &trans             &trans                       &b_min_tab 0 LC(LS(TAB))     &b_ht LA(RIGHT) LC(TAB)  &b_ht F14 F13
+&trans            &trans               &trans               &trans               &to L_TYPING             &trans  &trans  &kp BACKSPACE                                                                                             &trans
+            >;
+            sensor-bindings = <&inc_dec_kp 0 0>;
         };
 
         l3_AUTO_MOUSE {
