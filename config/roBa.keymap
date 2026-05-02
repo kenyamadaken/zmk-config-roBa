@@ -111,7 +111,6 @@
             bindings = <&macro_press &kp LCTRL &kp LSHIFT>, <&macro_tap &kp V>, <&macro_release &kp LCTRL &kp LSHIFT>;
         };
 
-        // --- カッコ入力用マクロ ---
         m_kagi: m_kagi {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -141,7 +140,6 @@
             bindings = <&kp LS(N8)>, <&kp LS(N9)>, <&kp F10>, <&kp ENTER>, <&kp LEFT>;
         };
 
-        // --- 新規追加：半角全角を叩いてレイヤー移動するマクロ ---
         m_to_eng: m_to_eng {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -336,10 +334,10 @@
 
         l5_number {
             bindings = <
-&trans  &trans  &trans  &trans  &trans                      &trans     &kp N1  &kp N2  &kp N3  &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &kp MINUS  &kp N4  &kp N5  &kp N6  &kp N0
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans     &kp N7  &kp N8  &kp N9  &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans                                     &trans
+&trans  &trans  &trans  &trans     &trans                               &trans     &kp N1  &kp N2  &kp N3  &trans
+&trans  &trans  &trans  &kp MINUS  &kp LS(SEMI)  &trans         &trans  &kp MINUS  &kp N4  &kp N5  &kp N6  &kp N0
+&trans  &trans  &trans  &kp FSLH   &kp LS(SQT)   &trans         &trans  &kp DOT    &kp N7  &kp N8  &kp N9  &trans
+&trans  &trans  &trans  &trans     &trans        &trans         &trans  &trans                                     &trans
             >;
         };
 
