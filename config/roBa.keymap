@@ -28,11 +28,13 @@
         m_minimize: m_minimize {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
+            wait-ms = <0>;
+            tap-ms = <0>;
             bindings = 
                 <&macro_press &kp LALT>, 
                 <&macro_tap &kp SPACE>, 
                 <&macro_release &kp LALT>, 
-                <&macro_wait_time 50>, 
+                <&macro_wait_time 20>, 
                 <&macro_tap &kp N>;
         };
         m_to_layer0: m_to_layer0 {
@@ -149,6 +151,17 @@
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp GRAVE>, <&to L_TYPING>;
+        };
+        
+        m_kake: m_kake {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp KP_MULTIPLY>;
+        };
+        m_waru: m_waru {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp KP_DIVIDE>;
         };
     };
 
@@ -348,10 +361,10 @@
 
         l5_number {
             bindings = <
-&trans  &trans  &trans  &trans     &trans                               &trans     &kp N1  &kp N2  &kp N3  &trans
-&trans  &trans  &trans  &kp MINUS  &kp LS(SEMI)  &trans         &trans  &kp MINUS  &kp N4  &kp N5  &kp N6  &kp N0
-&trans  &trans  &trans  &kp FSLH   &kp LS(SQT)   &trans         &trans  &kp DOT    &kp N7  &kp N8  &kp N9  &trans
-&trans  &trans  &trans  &trans     &trans        &trans         &trans  &trans                                     &trans
+&trans  &trans  &trans     &trans        &trans                               &trans     &kp N1  &kp N2  &kp N3  &kp EQUAL
+&trans  &trans  &kp MINUS  &kp PLUS      &trans        &trans         &trans  &kp MINUS  &kp N4  &kp N5  &kp N6  &kp N0
+&trans  &trans  &m_waru    &m_kake       &trans        &trans         &trans  &kp DOT    &kp N7  &kp N8  &kp N9  &trans
+&trans  &trans  &trans     &trans        &trans        &trans         &trans  &trans                                     &trans
             >;
         };
 
