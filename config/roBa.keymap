@@ -312,7 +312,7 @@
 &kp Q      &kp W         &kp E         &kp R            &kp T                                              &kp Y          &kp U  &lt L_SCROLL I    &kp O    &kp P
 &kp A      &kp S         &kp D         &kp F            &kp G        &tog L_MOUSE       &b_scshot 0 0      &kp H          &kp J  &kp K             &kp L    &kp ENTER
 &kp Z      &kp X         &kp C         &kp V            &kp B        &trans             &trans             &kp N          &kp M  &kp COMMA         &kp DOT  &trans
-&kp LCTRL  &kp LSHIFT    &kp LEFT_WIN  &b_num_jp L_NUM 0   &mt LSHIFT SQT   &lt_fast L_SYM SPACE           &trans         &kp BACKSPACE                                     &trans
+&kp LCTRL  &kp LSHIFT    &kp LEFT_WIN  &b_num_jp L_NUM 0   &mt LSHIFT LS(N7)   &lt_fast L_SYM SPACE          &trans         &kp BACKSPACE                                     &trans
             >;
             sensor-bindings = <&inc_dec_kp PG_UP PAGE_DOWN>;
         };
